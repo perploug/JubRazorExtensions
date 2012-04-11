@@ -10,8 +10,8 @@ namespace Site.Extensions
     public static class Media
     {
         public static HtmlString Image(this Content content, string fieldAlias, int size)
-        {
-            
+        {   
+            return new HtmlString("/media/etc/bleh")
         }        
     }
 }
