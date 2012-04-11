@@ -1,0 +1,28 @@
+﻿@inherits PartialViewMacroPage
+@using Umbraco.Cms.Web.Macros
+@using UF = Umbraco.Framework
+
+@functions {
+    
+    public int Number { get; set; }
+    public string Textstring { get; set; }
+    public string Textarea { get; set; }
+    public bool Boolean { get; set; }
+    public UF.HiveId ContentPicker { get; set; }
+    public UF.HiveId MediaPicker { get; set; }
+    
+}
+
+<div style="padding:10px;color:Black;">
+    I am a PartialView macro rendering content for this page: @Model.CurrentPage.Id.ToString(UF.HiveIdFormatStyle.AsUri)
+    <br />
+    Here are the parameters I've been passed:
+    <ul>
+        <li>Number = @Number</li>
+        <li>Textstring = @Textstring</li>
+        <li>Textarea = @((Textarea != null)? Html.Raw(Textarea.Replace(Environment.NewLine, "<br />")) : null)</li>
+        <li>Boolean = @Boolean</li>
+        <li>ContentPicker = @ContentPicker</li>
+        <li>MediaPicker = @MediaPicker</li>
+    </ul>
+</div>

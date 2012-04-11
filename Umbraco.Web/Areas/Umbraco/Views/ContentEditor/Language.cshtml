@@ -1,0 +1,36 @@
+﻿@model Umbraco.Cms.Web.Model.BackOffice.Editors.LanguageModel
+@{
+    Layout = "../Shared/_DialogLayout.cshtml";
+
+    ViewBag.Title = "Select language";
+    ViewBag.Action = "Language";
+    
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.EnablePartialViewValidation();
+}
+@section Head {
+    @{Html.RequiresJs("Umbraco.Editors/LanguageDialog.js", "Scripts");}
+    <script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+                Umbraco.Editors.LanguageDialog.getInstance().init({
+                    id: "@Model.Id",
+                    isoCode: "@Model.IsoCode"
+                });
+            });
+        })(jQuery);
+    </script>
+}
+<div data-bind="visible: !success()" id="hostnameDialog">
+    <h2>
+        Select language</h2>
+    <div class="big narrow-editor clearfix">              
+               
+        @Html.DropDownListFor(x => Model.IsoCode, Model.InstalledLanguages, "-- Please Select --", new Dictionary<string, object> { { "data-bind", "value: isoCode" } })
+
+    </div>
+</div>
+@Html.HiddenFor(x => Model.Id)
+
+<input type="hidden" name="DataValidation" id="DataValidation" data-bind="value: success()" value="" />

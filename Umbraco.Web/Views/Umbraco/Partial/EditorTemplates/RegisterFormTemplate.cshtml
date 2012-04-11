@@ -1,0 +1,75 @@
+﻿@model Umbraco.Cms.Web.UI.Models.RegisterModel
+
+@using (Html.BeginUmbracoForm("RegisterForm", "AuthSurface"))
+{
+    @Html.ValidationSummary(prefix: "RegisterForm")
+    <fieldset>
+        <legend>Login</legend>
+        
+        @Html.ValidationMessageFor(x => x.Name)
+        <div class="editor-label">
+            @Html.LabelFor(x => x.Name)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(x => x.Name)
+        </div>
+
+        @Html.ValidationMessageFor(x => x.Username)
+        <div class="editor-label">
+            @Html.LabelFor(x => x.Username)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(x => x.Username)
+        </div>
+
+        @Html.ValidationMessageFor(x => x.Email)
+        <div class="editor-label">
+            @Html.LabelFor(x => x.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(x => x.Email)
+        </div>
+        
+        @Html.ValidationMessageFor(x => x.Password)
+        <div class="editor-label">
+            @Html.LabelFor(x => x.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(x => x.Password)
+        </div>
+        
+        @Html.ValidationMessageFor(x => x.ConfirmPassword)
+        <div class="editor-label">
+            @Html.LabelFor(x => x.ConfirmPassword)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(x => x.ConfirmPassword)
+        </div>
+        
+        @if (Model.RequiresQuestionAndAnswer)
+        {
+            @Html.ValidationMessageFor(x => x.SecurityQuestion)
+            <div class="editor-label">
+                @Html.LabelFor(x => x.SecurityQuestion)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.SecurityQuestion)
+            </div>
+            
+            @Html.ValidationMessageFor(x => x.SecurityAnswer)
+            <div class="editor-label">
+                @Html.LabelFor(x => x.SecurityAnswer)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.SecurityAnswer)
+            </div>
+        }
+        
+        @Html.HiddenFor(x => x.MemberTypeAlias)
+        @Html.HiddenFor(x => x.MemberGroupId)
+        @Html.HiddenFor(x => x.SuccessRedirectId)
+
+        <br />
+        <input type="submit" value="Register"/>
+    </fieldset>
+}

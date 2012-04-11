@@ -1,0 +1,610 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Umbraco.Framework.Security</name>
+    </assembly>
+    <members>
+        <member name="M:Umbraco.Framework.Security.IPermissionsService.GetExplicitPermission(System.Guid,System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the explicit permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userGroupIds">The user group ids.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.IPermissionsService.GetExplicitPermission(System.Guid,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the explicit permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userId">The user id.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.IPermissionsService.GetInheritedPermission(System.Guid,System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the inherited permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userGroupIds">The user group ids.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.IPermissionsService.GetInheritedPermission(System.Guid,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the inherited permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userId">The user id.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.IPermissionsService.GetEffectivePermission(System.Guid,System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the effective permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userGroupIds">The user group ids.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.IPermissionsService.GetEffectivePermission(System.Guid,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the effective permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userId">The user id.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Framework.Security.IPermissionsService.Hive">
+            <summary>
+            Gets the hive.
+            </summary>
+            <value>The hive.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.ISecurityService.Users">
+            <summary>
+            Gets the users membership service.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.ISecurityService.Members">
+            <summary>
+            Gets the members membership service.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.ISecurityService.Permissions">
+            <summary>
+            Gets the permissions service.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.ISecurityService.PublicAccess">
+            <summary>
+            Gets the public access service.
+            </summary>
+        </member>
+        <member name="T:Umbraco.Framework.Security.Model.Entities.Member">
+            <summary>
+            A User entity
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Security.Model.Entities.Profile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Security.Model.Entities.Profile"/> class.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Security.Model.Entities.Profile.SetProviderUserKeyType(System.Type)">
+            <summary>
+            Sets the type of the provider user key.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.Profile.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.Profile.ProviderUserKey">
+            <summary>
+            Gets or sets the provider user key.
+            </summary>
+            <value>
+            The provider user key.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.Profile.ProviderUserKeyType">
+            <summary>
+            Gets or sets the type of the provider user key.
+            </summary>
+            <value>
+            The type of the provider user key.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.ProviderUserKey">
+            <summary>
+            The unique identifier for the user for use with Membership services
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.IsOnline">
+            <summary>
+            Gets or sets a value indicating whether this instance is online.
+            </summary>
+            <value>
+              <c>true</c> if this instance is online; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.IsLockedOut">
+            <summary>
+            Gets or sets a value indicating whether this instance is locked out.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is locked out; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.LastLockoutDate">
+            <summary>
+            Gets or sets the last lockout date.
+            </summary>
+            <value>
+            The last lockout date.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.Username">
+            <summary>
+            Gets or sets the username.
+            </summary>
+            <value>
+            The username.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>
+            The password.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.PasswordSalt">
+            <summary>
+            Gets or sets the password salt.
+            </summary>
+            <value>
+            The password salt.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.PasswordQuestion">
+            <summary>
+            Gets or sets the password question.
+            </summary>
+            <value>
+            The password question.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.PasswordAnswer">
+            <summary>
+            Gets or sets the password answer.
+            </summary>
+            <value>
+            The password answer.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+            <value>
+            The email.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.Comments">
+            <summary>
+            Gets or sets the comments.
+            </summary>
+            <value>
+            The comments.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.IsApproved">
+            <summary>
+            Gets or sets a value indicating whether this instance is approved.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is approved; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.LastLoginDate">
+            <summary>
+            Gets or sets the last login date.
+            </summary>
+            <value>
+            The last login date.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.LastActivityDate">
+            <summary>
+            Gets or sets the last activity date.
+            </summary>
+            <value>
+            The last activity date.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UmbracoMembershipUser.LastPasswordChangeDate">
+            <summary>
+            Gets or sets the last password change date.
+            </summary>
+            <value>
+            The last password change date.
+            </value>
+        </member>
+        <member name="T:Umbraco.Framework.Security.Model.Entities.User">
+            <summary>
+            A User entity
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UserProfile.SessionTimeout">
+            <summary>
+            Gets or sets the session timeout.
+            </summary>
+            <value>
+            The session timeout.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UserProfile.StartContentHiveId">
+            <summary>
+            Gets or sets the start content hive id.
+            </summary>
+            <value>
+            The start content hive id.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UserProfile.StartMediaHiveId">
+            <summary>
+            Gets or sets the start media hive id.
+            </summary>
+            <value>
+            The start media hive id.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Model.Entities.UserProfile.Applications">
+            <summary>
+            Gets or sets the applications.
+            </summary>
+            <value>
+            The applications.
+            </value>
+        </member>
+        <member name="M:Umbraco.Framework.Security.Permission.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Security.Permission"/> class.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Permission.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>
+            The id.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Permission.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Permission.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.Permission.UserType">
+            <summary>
+            Gets or sets the type of the user this permission should affect.
+            </summary>
+            <value>
+            The type of the user.
+            </value>
+        </member>
+        <member name="T:Umbraco.Framework.Security.PermissionAttribute">
+            <summary>
+            Defines a Permission
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionAttribute.#ctor(System.String,System.String,System.String,Umbraco.Framework.Security.UserType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Security.PermissionAttribute"/> class.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="name">The name.</param>
+            <param name="type">The type.</param>
+            <param name="userType">Type of the user.</param>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PermissionAttribute.Name">
+            <summary>
+            Gets the name of the name.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PermissionAttribute.Type">
+            <summary>
+            Gets the type.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PermissionAttribute.UserType">
+            <summary>
+            Gets the user type.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionExtensions.FilterWithPermissions``1(System.Collections.Generic.IEnumerable{``0},System.Guid,Umbraco.Framework.Security.IPermissionsService,Umbraco.Framework.HiveId)">
+            <summary>
+            Filters the node set to nodes that are allowed for the user/permission combination
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entities">The entities.</param>
+            <param name="permissionId">The permission id.</param>
+            <param name="permissionsyService">The permissionsy service.</param>
+            <param name="userId">The user id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionExtensions.FilterWithPermissions(System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.Security.IPermissionsService,Umbraco.Framework.HiveId,Umbraco.Hive.ProviderGrouping.IReadonlyGroupUnit{Umbraco.Hive.RepositoryTypes.IContentStore},Umbraco.Hive.ProviderGrouping.IReadonlyGroupUnit{Umbraco.Hive.RepositoryTypes.ISecurityStore},System.Guid[])">
+            <summary>
+            Filters a sequence of <see cref="T:Umbraco.Framework.HiveId"/> where user <paramref name="userId"/> has permission <paramref name="permissionIds"/> by checking with <paramref name="securityService"/>.
+            </summary>
+            <param name="entityIds">The entity ids.</param>
+            <param name="permissionsyService">The permissionsy service.</param>
+            <param name="userId">The user id.</param>
+            <param name="entityUow">The entity uow.</param>
+            <param name="securityUow">The security uow.</param>
+            <param name="permissionIds">The permission ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionExtensions.Exists(System.Collections.Generic.IEnumerable{System.Lazy{Umbraco.Framework.Security.Permission,Umbraco.Framework.Security.PermissionMetadata}},System.Guid)">
+            <summary>
+            Checks whether specified permission exists.
+            </summary>
+            <param name="permissions">The permissions.</param>
+            <param name="permissionId">The permission id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionExtensions.Get(System.Collections.Generic.IEnumerable{System.Lazy{Umbraco.Framework.Security.Permission,Umbraco.Framework.Security.PermissionMetadata}},System.Guid)">
+            <summary>
+            Gets the specified permissions.
+            </summary>
+            <param name="permissions">The permissions.</param>
+            <param name="permissionId">The permission id.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PermissionMetadata.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PermissionMetadata.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PermissionMetadata.UserType">
+            <summary>
+            Gets or sets the user type.
+            </summary>
+            <value>
+            The user type.
+            </value>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionResults.AreAllAllowed">
+            <summary>
+            Gets a value indicating whether all of the permissions in this resultset are allowed.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionResults.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionResults.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PermissionResults.Statuses">
+            <summary>
+            Gets the statuses of all the results.
+            </summary>
+            <value>The statuses.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PermissionResults.SourceId">
+            <summary>
+            Gets the source id of this set of results.
+            </summary>
+            <value>The source id.</value>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionsService.GetExplicitPermission(System.Guid,System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the explicit permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userGroupIds">The user group ids.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionsService.GetExplicitPermission(System.Guid,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the explicit permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userId">The user id.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionsService.GetInheritedPermission(System.Guid,System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the inherited permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userGroupIds">The user group ids.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionsService.GetInheritedPermission(System.Guid,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the inherited permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userId">The user id.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionsService.GetEffectivePermission(System.Guid,System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the effective permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userGroupIds">The user group ids.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionsService.GetEffectivePermission(System.Guid,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the effective permission.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userId">The user id.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionsService.GetPermissionStatus(System.Guid,System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId,Umbraco.Framework.HiveId@)">
+            <summary>
+            Gets the permission status.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userGroupIds">The user group ids.</param>
+            <param name="entityId">The entity id.</param>
+            <param name="source">The source.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionsService.GetPermissionStatus(System.Guid,System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId,Umbraco.Framework.HiveId@,Umbraco.Hive.ProviderGrouping.IReadonlyGroupUnit{Umbraco.Hive.RepositoryTypes.ISecurityStore})">
+            <summary>
+            Gets the permission status using an existing, open unit of work.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+            <param name="userGroupIds">The user group ids.</param>
+            <param name="entityId">The entity id.</param>
+            <param name="source">The source.</param>
+            <param name="uow">The unit of work.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PermissionsService.GetUserGroupIdsForUser(Umbraco.Framework.HiveId)">
+            <summary>
+            Gets a list of UserGroup ids that the specified User belongs to.
+            </summary>
+            <param name="userId">The user id.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PermissionsService.Hive">
+            <summary>
+            Gets the hive.
+            </summary>
+            <value>The hive.</value>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PublicAccessExtensions.FilterWithPublicAccess(System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId,Umbraco.Framework.Security.IPublicAccessService)">
+            <summary>
+            Filters the with public access.
+            </summary>
+            <param name="entityIds">The entity ids.</param>
+            <param name="memberId">The member id.</param>
+            <param name="publicAccessService">The public access service.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PublicAccessExtensions.FilterWithPublicAccess(System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.Security.Model.Entities.Member,Umbraco.Framework.Security.IPublicAccessService)">
+            <summary>
+            Filters the with public access.
+            </summary>
+            <param name="entityIds">The entity ids.</param>
+            <param name="member">The member.</param>
+            <param name="publicAccessService">The public access service.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PublicAccessService.IsProtected(Umbraco.Framework.HiveId)">
+            <summary>
+            Determines whether the specified entity id is protected.
+            </summary>
+            <param name="entityId">The entity id.</param>
+            <returns>
+              <c>true</c> if the specified entity id is protected; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PublicAccessService.GetPublicAccessStatus(System.Collections.Generic.IEnumerable{Umbraco.Framework.HiveId},Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the public access status for the specified user groups.
+            </summary>
+            <param name="userGroupIds">The user group ids.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PublicAccessService.GetPublicAccessStatus(Umbraco.Framework.HiveId,Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the public access status for the specified member.
+            </summary>
+            <param name="memberId">The member id.</param>
+            <param name="entityId">The entity id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Security.PublicAccessService.GetUserGroupIdsForMember(Umbraco.Framework.HiveId)">
+            <summary>
+            Gets a list of UserGroup ids that the specified Member belongs to.
+            </summary>
+            <param name="memberId">The member id.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Framework.Security.PublicAccessService.Hive">
+            <summary>
+            Gets the hive.
+            </summary>
+            <value>The hive.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Security.SecurityService.Users">
+            <summary>
+            Gets the users membership service.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.SecurityService.Members">
+            <summary>
+            Gets the members membership service.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.SecurityService.Permissions">
+            <summary>
+            Gets the permissions service.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Security.SecurityService.PublicAccess">
+            <summary>
+            Gets the public access service.
+            </summary>
+        </member>
+    </members>
+</doc>

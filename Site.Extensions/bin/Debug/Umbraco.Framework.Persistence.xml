@@ -1,0 +1,2018 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Umbraco.Framework.Persistence</name>
+    </assembly>
+    <members>
+        <member name="M:Umbraco.Framework.Persistence.Abstractions.Attribution.MetaData.IAttributeSerializationDefinition.Serialize(Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute)">
+            <summary>
+            Serializes the specified value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Abstractions.Attribution.MetaData.IAttributeSerializationDefinition.DataSerializationType">
+            <summary>
+              Gets or sets the type of the data serialization.
+            </summary>
+            <value>The type of the data serialization.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.IEntity.UtcCreated">
+            <summary>
+              Gets or sets the creation date of the entity (UTC).
+            </summary>
+            <value>The UTC created.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.IEntity.UtcModified">
+            <summary>
+              Gets or sets the modification date of the entity (UTC).
+            </summary>
+            <value>The UTC modified.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.IEntity.UtcStatusChanged">
+            <summary>
+              Gets or sets the timestamp when the status of this entity was last changed (in UTC).
+            </summary>
+            <value>The UTC status changed.</value>
+        </member>
+        <member name="F:Umbraco.Framework.Persistence.Model.AbstractEntity._propertyChangedInfo">
+            <summary>
+            Tracks the properties that have changed
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.AbstractEntity.IsPropertyDirty(System.String)">
+            <summary>
+            Returns true if the property referenced by the name has been changed on the class
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.AbstractEntity.IsDirty">
+            <summary>
+            Returns true if any properties have been changed on the class
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.AbstractEntity.OnPropertyChanged``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Method to call on a property setter
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+            <param name="propSelector"></param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.AbstractEntity.OnPropertyChanged(System.Reflection.PropertyInfo)">
+            <summary>
+            Method to call on a property setter.
+            </summary>
+            <param name="propertyInfo">The property info.</param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.AbstractEntity.ConcurrencyToken">
+            <summary>
+            Gets the concurrency token.
+            </summary>
+            <value>The concurrency token.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.AbstractEntity.UtcCreated">
+            <summary>
+              Gets or sets the creation date of the entity (UTC).
+            </summary>
+            <value>The UTC created.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.AbstractEntity.UtcModified">
+            <summary>
+              Gets or sets the modification date of the entity (UTC).
+            </summary>
+            <value>The UTC modified.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.AbstractEntity.UtcStatusChanged">
+            <summary>
+              Gets or sets the timestamp when the status of this entity was last changed (in UTC).
+            </summary>
+            <value>The UTC status changed.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.AbstractEntity.Id">
+            <summary>
+              Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="E:Umbraco.Framework.Persistence.Model.AbstractEntity.PropertyChanged">
+            <summary>
+            Property changed event
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.IRelatableEntity.RelationProxies">
+            <summary>
+            A store of relation proxies for this entity, to support enlisting relations to this entity.
+            The relations will not be persisted until the entity is passed to a repository for saving.
+            If <see cref="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.IsConnected"/> is <code>true</code>, this sequence may have
+            <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> objects lazily loaded by enumerating the results of calling <see cref="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.LazyLoadDelegate"/>.
+            </summary>
+            <value>The relation proxies.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.TypedEntity.AttributeGroups">
+            <summary>
+            Gets the attribute groups.
+            </summary>
+            <value>The attribute groups.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.TypedEntity.EntitySchema">
+            <summary>
+            Gets the attribute schema.
+            </summary>
+            <value>The attribute schema.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.TypedEntity.RelationProxies">
+            <summary>
+            A store of relation proxies for this entity, to support enlisting relations to this entity.
+            The relations will not be persisted until the entity is passed to a repository for saving.
+            If <see cref="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.IsConnected"/> is <code>true</code>, this sequence may have
+            <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> objects lazily loaded by enumerating the results of calling <see cref="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.LazyLoadDelegate"/>.
+            </summary>
+            <value>The relation proxies.</value>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.AttributeTypeRegistry">
+            <summary>
+            A singleton class to resolve the current IAttributeTypeFactory
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.AttributeTypeRegistry.#cctor">
+            <summary>
+            Static constructor sets default registry
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.AttributeTypeRegistry.SetCurrent(Umbraco.Framework.Persistence.IAttributeTypeRegistry)">
+            <summary>
+            Sets the passed in IAttributeTypeRegistry to be the current one resolved from the Current property
+            </summary>
+            <param name="attributeTypeRegistry"></param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.AttributeTypeRegistry.Current">
+            <summary>
+            Returns the currently registered IAttributeTypeRegistry
+            </summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.DefaultAttributeTypeRegistry">
+            <summary>
+            A default threadsafe IAttributeTypeRegistry
+            </summary>
+            <remarks>>
+            By default, this class includes all of the system AttributeType's registered with default (blank) RenderTypeProvider information
+            </remarks>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.IAttributeTypeRegistry">
+            <summary>
+            Defines at an AttributeType registry to resolve AttributeTypes by alias
+            </summary>
+            <remarks>
+            This is used in order to ensure that pre-made AttributeType's are setup correctly 
+            for the current environment such as the CMS environment since each environment may
+            require that an AttributeType behave slightly differently like rendering a different
+            RenderTypeProvider
+            </remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.IAttributeTypeRegistry.GetAttributeType(System.String)">
+            <summary>
+            Gets the AttributeType by alias
+            </summary>
+            <param name="alias">The alias.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.IAttributeTypeRegistry.RegisterAttributeType(System.Func{Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType})">
+            <summary>
+            Registers or updates an AttributeType in the registry
+            </summary>
+            <param name="attributeType">the AttributeType.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.IAttributeTypeRegistry.TryGetAttributeType(System.String)">
+            <summary>
+            Tries to get an <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType"/> by alias.
+            </summary>
+            <param name="alias">The alias.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.DefaultAttributeTypeRegistry.#ctor">
+            <summary>
+            Ensures all known types are registered on construcion
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.DefaultAttributeTypeRegistry.GetAttributeType(System.String)">
+            <summary>
+            Gets the AttributeType by alias
+            </summary>
+            <param name="alias">The alias.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.DefaultAttributeTypeRegistry.TryGetAttributeType(System.String)">
+            <summary>
+            Tries to get an AttributeType by alias.
+            </summary>
+            <param name="alias">The alias.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.DefaultAttributeTypeRegistry.RegisterAttributeType(System.Func{Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType})">
+            <summary>
+            Registers or updates an AttributeType in the registry
+            </summary>
+            <param name="attributeType">the AttributeType.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.DefaultAttributeTypeRegistry.EnsureDefaultRegistrations">
+            <summary>
+            Ensures all known types are registered
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.DefaultAttributeTypeRegistry.RegisterDefaultTypes">
+            <summary>
+            Called one time to register default types for the class instance before
+            any AttributeType's get resolved or Registered.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.DefaultAttributeTypeRegistry.RegisterSystemAttributeTypes">
+            <summary>
+            Called by RegisterDefaultTypes to register all build in system types
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.AbstractSchemaPart`1.Alias">
+            <summary>
+            Gets or sets the alias of the object. The alias is a string to which this object
+            can be referred programmatically, and is often a normalised version of the <see cref="P:Umbraco.Framework.IReferenceByName.Name"/> property.
+            </summary>
+            <value>The alias.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.AbstractSchemaPart`1.Name">
+            <summary>
+            Gets or sets the name of the object. The name is a string intended to be human-readable, and
+            is often a more descriptive version of the <see cref="!:IReferenceByName.Alias"/> property.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById">
+            <summary>
+            Represents a relation between two items that can be identified by <see cref="T:Umbraco.Framework.HiveId"/> values.
+            This relation class is used for lazy-loading where only the identifiers are loaded rather than the whole entity.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById.#ctor(Umbraco.Framework.HiveId,Umbraco.Framework.HiveId,Umbraco.Framework.Persistence.Model.Associations.AbstractRelationType,System.Int32,Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById"/> class.
+            </summary>
+            <param name="sourceId">The source id.</param>
+            <param name="destinationId">The destination id.</param>
+            <param name="relationType">Type of the relation.</param>
+            <param name="ordinal">The ordinal.</param>
+            <param name="metaData">The meta data.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById.GetMembersForEqualityComparison">
+            <summary>
+            Gets the members for equality comparison.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById.CompareTo(System.Int32)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <returns>
+            A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other"/> parameter.Zero This object is equal to <paramref name="other"/>. Greater than zero This object is greater than <paramref name="other"/>. 
+            </returns>
+            <param name="other">An object to compare with this object.</param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById.DestinationId">
+            <summary>
+            Gets or sets the destination id.
+            </summary>
+            <value>The destination id.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById.SourceId">
+            <summary>
+            Gets or sets the source id.
+            </summary>
+            <value>The source id.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById.MetaData">
+            <summary>
+            Gets or sets the meta data.
+            </summary>
+            <value>The meta data.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationById.Ordinal">
+            <summary>
+            Gets or sets the ordinal.
+            </summary>
+            <value>The ordinal.</value>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations.Relation`2.#ctor(Umbraco.Framework.Persistence.Model.Associations.AbstractRelationType,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId,Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.Model.Associations.Relation"/> class to relate two entities together by Id only.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations.RelationMetaDataCollection.Clear">
+            <summary>
+            Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only. </exception>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations.RelationMetaDataCollection.Contains(Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"/> contains a specific value.
+            </summary>
+            <returns>
+            true if <paramref name="item"/> is found in the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false.
+            </returns>
+            <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations.RelationMetaDataCollection.CopyTo(Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[],System.Int32)">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see cref="T:System.Array"/> must have zero-based indexing.</param><param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param><exception cref="T:System.ArgumentNullException"><paramref name="array"/> is null.</exception><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="arrayIndex"/> is less than 0.</exception><exception cref="T:System.ArgumentException"><paramref name="array"/> is multidimensional.-or-The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.-or-Type <paramref name="T"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.</exception>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations.RelationMetaDataCollection.Remove(Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum)">
+            <summary>
+            Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <returns>
+            true if <paramref name="item"/> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false. This method also returns false if <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </returns>
+            <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param><exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.</exception>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations.RelationMetaDataCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations.RelationMetaDataCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations.RelationMetaDataCollection.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <returns>
+            The number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations.RelationMetaDataCollection.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+            </summary>
+            <returns>
+            true if the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only; otherwise, false.
+            </returns>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy">
+            <summary>
+            A functional proxy class for a <see cref="T:Umbraco.Framework.Persistence.Model.Associations.Relation"/> used by <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy.#ctor(Umbraco.Framework.Persistence.Model.Associations.IReadonlyRelation{Umbraco.Framework.Persistence.Model.IRelatableEntity,Umbraco.Framework.Persistence.Model.IRelatableEntity},Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyStatus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> class.
+            </summary>
+            <param name="newRelation">The new relation.</param>
+            <param name="status">The status.</param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy.Status">
+            <summary>
+            Gets or sets the status of the proxy.
+            </summary>
+            <value>The status.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy.Item">
+            <summary>
+            Gets or sets the relation.
+            </summary>
+            <value>The item.</value>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection">
+            <summary>
+            An enumerable sequence of <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> objects. Supports enlisting manual relation proxies which should then be 
+            considered for persistence if the <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> which "owns" this collection is subsequently saved to a repository.
+            Does not support removing or changing relations; these actions are to be done on the repository service.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.#ctor(Umbraco.Framework.Persistence.Model.IRelatableEntity)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection"/> class.
+            </summary>
+            <param name="collectionOwner">The collection owner.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.EnsureLazyLoaderCalled">
+            <summary>
+            Ensures the lazy loader is called, and does nothing if it already has been.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.AddToParentsWithLock(System.Collections.Generic.IEnumerable{Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy})">
+            <summary>
+            Adds the range of <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> items, first obtaining a lock.
+            </summary>
+            <param name="relationProxy">The relation proxy.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.AddToChildrenWithLock(System.Collections.Generic.IEnumerable{Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy})">
+            <summary>
+            Adds the range of <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> items, first obtaining a lock.
+            </summary>
+            <param name="relationProxy">The relation proxy.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.EnlistParent(Umbraco.Framework.Persistence.Model.IRelatableEntity,Umbraco.Framework.Persistence.Model.Associations.AbstractRelationType,Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[])">
+            <summary>
+            Enlists an <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> in a <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> as a parent of the <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> which owns this collection.
+            </summary>
+            <param name="parent">The parent.</param>
+            <param name="type">The type.</param>
+            <param name="metaData">The meta data.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.EnlistParent(Umbraco.Framework.Persistence.Model.IRelatableEntity,Umbraco.Framework.Persistence.Model.Associations.AbstractRelationType,System.Int32,Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[])">
+            <summary>
+            Enlists an <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> in a <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> as a parent of the <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> which owns this collection.
+            </summary>
+            <param name="parent">The parent.</param>
+            <param name="type">The type.</param>
+            <param name="ordinal">The ordinal.</param>
+            <param name="metaData">The meta data.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.EnlistParentById(Umbraco.Framework.HiveId,Umbraco.Framework.Persistence.Model.Associations.AbstractRelationType,System.Int32,Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[])">
+            <summary>
+            Enlists the id of an <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> in a <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> as a parent of the <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> which owns this collection.
+            </summary>
+            <param name="parentId">The parent id.</param>
+            <param name="type">The type.</param>
+            <param name="ordinal">The ordinal.</param>
+            <param name="metaData">The meta data.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.EnlistChild(Umbraco.Framework.Persistence.Model.IRelatableEntity,Umbraco.Framework.Persistence.Model.Associations.AbstractRelationType,Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[])">
+            <summary>
+            Enlists an <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> in a <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> as a child of the <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> which owns this collection.
+            </summary>
+            <param name="child">The child.</param>
+            <param name="type">The type.</param>
+            <param name="metaData">The meta data.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.EnlistChild(Umbraco.Framework.Persistence.Model.IRelatableEntity,Umbraco.Framework.Persistence.Model.Associations.AbstractRelationType,System.Int32,Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[])">
+            <summary>
+            Enlists an <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> in a <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> as a child of the <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> which owns this collection.
+            </summary>
+            <param name="child">The child.</param>
+            <param name="type">The type.</param>
+            <param name="ordinal">The ordinal.</param>
+            <param name="metaData">The meta data.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.EnlistChildById(Umbraco.Framework.HiveId,Umbraco.Framework.Persistence.Model.Associations.AbstractRelationType,System.Int32,Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[])">
+            <summary>
+            Enlists the id of an <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> in a <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> as a child of the <see cref="T:Umbraco.Framework.Persistence.Model.IRelatableEntity"/> which owns this collection.
+            </summary>
+            <param name="childId">The child id.</param>
+            <param name="type">The type.</param>
+            <param name="ordinal">The ordinal.</param>
+            <param name="metaData">The meta data.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.GetManualProxies">
+            <summary>
+            Gets the <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> items that have been manually enlisted in this collection, and are therefore to be considered for saving
+            to a datastore.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.GetManualParentProxies">
+            <summary>
+            Gets the manually-added parent proxies without invoking the lazy-load mechanism.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.GetManualChildProxies">
+            <summary>
+            Gets the manually-added child proxies without invoking the lazy-load mechanism.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.LazyLoadDelegate">
+            <summary>
+            Gets or sets the lazy load delegate.
+            </summary>
+            <value>The lazy load delegate.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.IsConnected">
+            <summary>
+            Gets a value indicating whether this instance is connected to its datasource and can load relations on-demand
+            using the <see cref="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.LazyLoadDelegate"/>.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is connected; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyStatus">
+            <summary>
+            Indicates an origin of a <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/>.
+            </summary>
+        </member>
+        <member name="F:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyStatus.AutoLoaded">
+            <summary>
+            The <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> was automatically loaded from a lazy-loader delegate.
+            </summary>
+        </member>
+        <member name="F:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyStatus.ManuallyAdded">
+            <summary>
+            The <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> was created manually. Indicates that if the entities are saved to the datastore, the relation encompassed by this proxy should be saved.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeDefinition.CompareTo(System.Int32)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <returns>
+            A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other"/> parameter.Zero This object is equal to <paramref name="other"/>. Greater than zero This object is greater than <paramref name="other"/>. 
+            </returns>
+            <param name="other">An object to compare with this object.</param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeDefinition.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeDefinition.Ordinal">
+            <summary>
+            Gets the ordinal.
+            </summary>
+            <value>The ordinal.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeDefinition.AttributeType">
+            <summary>
+            Gets or sets the type of the attribute.
+            </summary>
+            <value>The type of the attribute.</value>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeGroup.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeGroup"/> class.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeGroup.CompareTo(System.Int32)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <returns>
+            A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other"/> parameter.Zero This object is equal to <paramref name="other"/>. Greater than zero This object is greater than <paramref name="other"/>. 
+            </returns>
+            <param name="other">An object to compare with this object.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeGroup.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeGroup.Ordinal">
+            <summary>
+            Gets the ordinal.
+            </summary>
+            <value>The ordinal.</value>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.EnsureGroupsPopulated">
+            <summary>
+            Ensures the groups specified in this instance's <see cref="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.AttributeDefinitions"/> are contained in the local collection
+            of groups. 
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.GetXmlPropertyAsList(System.String)">
+            <summary>
+            Returns a list of string values that have been put into the XML config as a list
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.GetXmlPropertyAsList``1(System.String)">
+            <summary>
+            Returns a list of T values that have been put into the XML config as a list
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.GetXmlConfigProperty``1(System.String)">
+            <summary>
+            Returns a  value from the xml config property
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.GetXmlConfigProperty(System.String)">
+            <summary>
+            Returns a string value from the XML property
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.SetXmlConfigProperty``1(System.String,``0[])">
+            <summary>
+            Stores the list of T in an XML property
+            </summary>
+            <param name="key"></param>
+            <param name="values"></param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.SetXmlConfigProperty(System.String,System.String[])">
+            <summary>
+            Stores the list of values in an XML property
+            </summary>
+            <param name="key"></param>
+            <param name="values"></param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.SetXmlConfigProperty(System.String,System.String)">
+            <summary>
+            Stores as string value in the XML property
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.SchemaType">
+            <summary>
+            Gets or sets the type of the schema, for example "content", "media", "user" etc.
+            </summary>
+            <value>The type of the schema.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.AttributeDefinitions">
+            <summary>
+              Gets the attribute definitions for this schema.
+            </summary>
+            <value>The attribute type definitions.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.AttributeGroups">
+            <summary>
+            Gets the attribute group definitions.
+            </summary>
+            <value>The attribute group definitions.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.IsAbstract">
+            <summary>
+            Expose from the XML config the abstract setting for the document type 
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema.RelationProxies">
+            <summary>
+            A store of relation proxies for this entity, to support enlisting relations to this entity.
+            The relations will not be persisted until the entity is passed to a repository for saving.
+            If <see cref="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.IsConnected"/> is <code>true</code>, this sequence may have
+            <see cref="T:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxy"/> objects lazily loaded by enumerating the results of calling <see cref="P:Umbraco.Framework.Persistence.Model.Associations._Revised.RelationProxyCollection.LazyLoadDelegate"/>.
+            </summary>
+            <value>The relation proxies.</value>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType.CompareTo(System.Int32)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <returns>
+            A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other"/> parameter.Zero This object is equal to <paramref name="other"/>. Greater than zero This object is greater than <paramref name="other"/>. 
+            </returns>
+            <param name="other">An object to compare with this object.</param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType.RenderTypeProvider">
+            <summary>
+            Gets or sets the render type provider.
+            </summary>
+            <value>The render type provider.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType.RenderTypeProviderConfig">
+            <summary>
+            Gets or sets the render type provider config.
+            </summary>
+            <value>The render type provider config.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType.Description">
+            <summary>
+              Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType.Ordinal">
+            <summary>
+            Gets the ordinal.
+            </summary>
+            <value>The ordinal.</value>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.Constants.Entities.Hostname">
+            <summary>
+            A hostname entity
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.Entities.Hostname.Name">
+            <summary>
+            Gets/sets the hostname
+            </summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.Constants.Schemas.HostnameSchema">
+            <summary>
+            Represents the schema for a hostname entity
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.BoolSerializationType.Serialize(Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute)">
+            <summary>
+            Serializes the specified value.
+            </summary>
+            <param name="value">The value.</param>        
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.BoolSerializationType.Alias">
+            <summary>
+            Gets or sets the alias of the object. The alias is a string to which this object
+            can be referred programmatically, and is often a normalised version of the <see cref="P:Umbraco.Framework.IReferenceByName.Name"/> property.
+            </summary>
+            <value>The alias.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.BoolSerializationType.Name">
+            <summary>
+            Gets or sets the name of the object. The name is a string intended to be human-readable, and
+            is often a more descriptive version of the <see cref="!:IReferenceByName.Alias"/> property.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.BoolSerializationType.DataSerializationType">
+            <summary>
+              Gets or sets the type of the data serialization.
+            </summary>
+            <value>The type of the data serialization.</value>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.Constants.FixedHiveIds">
+            <summary>
+            Reserved Hive Ids
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.ByteArraySerializationType.Serialize(Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute)">
+            <summary>
+            Serializes the specified value.
+            </summary>
+            <param name="value">The value.</param>        
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.ByteArraySerializationType.Alias">
+            <summary>
+            Gets or sets the alias of the object. The alias is a string to which this object
+            can be referred programmatically, and is often a normalised version of the <see cref="P:Umbraco.Framework.IReferenceByName.Name"/> property.
+            </summary>
+            <value>The alias.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.ByteArraySerializationType.Name">
+            <summary>
+            Gets or sets the name of the object. The name is a string intended to be human-readable, and
+            is often a more descriptive version of the <see cref="!:IReferenceByName.Alias"/> property.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.ByteArraySerializationType.DataSerializationType">
+            <summary>
+              Gets or sets the type of the data serialization.
+            </summary>
+            <value>The type of the data serialization.</value>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.IO.File.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new file object with string contents. <paramref name="textContent"/> will be encoded as UTF32.
+            </summary>
+            <param name="fileName"></param>
+            <param name="textContent"></param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.IO.File.#ctor(System.String,System.Byte[])">
+            <summary>
+            Creates a new file object with byte contents.
+            </summary>
+            <param name="fileName"></param>
+            <param name="contentBytes"></param>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.LinqSupport.PersistenceModelStructureBinder">
+            <summary>
+            Provides a mechanism to assess certain types of expression and determine whether they are supported by the expression binding provider. 
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.LinqSupport.PersistenceModelStructureBinder.CreateFieldSelector(System.Linq.Expressions.MethodCallExpression,Umbraco.Framework.Linq.CriteriaGeneration.StructureMetadata.BindingSignatureSupport)">
+            <summary>
+            Creates a <see cref="T:Umbraco.Framework.Linq.CriteriaGeneration.Expressions.FieldSelectorExpression"/> from a <see cref="T:System.Linq.Expressions.MethodCallExpression"/>.
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="reportedSignatureSupport">A component outlining the supported expression structure of this provider.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.LinqSupport.PersistenceModelStructureBinder.IsSupportedMethod(System.Linq.Expressions.MethodCallExpression)">
+            <summary>
+            Determines whether the expression represents a supported method call.
+            </summary>
+            <param name="expression">The expression.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.LinqSupport.PersistenceModelStructureBinder.IsSupportedMember(System.Linq.Expressions.MemberExpression)">
+            <summary>
+            Determines whether the expression represents a supported member access call.
+            </summary>
+            <param name="expression">The expression.</param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.PersistenceMetadata">
+            <summary>
+            Represents metadata set by the provider responsible for persisting <see cref="T:Umbraco.Framework.Persistence.Model.AbstractEntity"/>.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.PersistenceMetadata.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.Model.PersistenceMetadata"/> class.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.PersistenceMetadata.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.PersistenceMetadata.SourceEntity">
+            <summary>
+            Used to store the original source entity
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Versioning.EntitySnapshot`1.#ctor(Umbraco.Framework.Persistence.Model.Versioning.Revision{`0},System.Collections.Generic.IEnumerable{Umbraco.Framework.Persistence.Model.Versioning.RevisionData})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Versioning.EntitySnapshot`1.#ctor(Umbraco.Framework.Persistence.Model.Versioning.Revision{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Versioning.Revision`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="F:Umbraco.Framework.Persistence.Model.Versioning.Revision`1._propertyChangedInfo">
+            <summary>
+            Tracks the properties that have changed
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Versioning.Revision`1.IsPropertyDirty(System.String)">
+            <summary>
+            Returns true if the property referenced by the name has been changed on the class
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Versioning.Revision`1.IsDirty">
+            <summary>
+            Returns true if any properties have been changed on the class
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Versioning.Revision`1.OnPropertyChanged``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Method to call on a property setter
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+            <param name="propSelector"></param>
+        </member>
+        <member name="E:Umbraco.Framework.Persistence.Model.Versioning.Revision`1.PropertyChanged">
+            <summary>
+            Property changed event
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.ProviderSupport._Revised.ProviderMetadata.IsPassthroughProvider">
+            <summary>
+            Gets or sets a value indicating whether this instance is passthrough provider, i.e. is not responsible for id generation.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is passthrough provider; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Mapping.RdbmsToModelMapper.MapAttributeTypeDefinition(Umbraco.Framework.Persistence.RdbmsModel.AttributeType,Umbraco.Framework.TypeMapping.AbstractLookupHelper,Umbraco.Framework.TypeMapping.AbstractMappingEngine,System.Collections.Generic.ICollection{Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType})">
+            <summary>
+            Used to map AttributeTypes when mapping to the EntitySchema
+            </summary>
+            <param name="attributeType"></param>
+            <param name="lookupHelper"></param>
+            <param name="masterMapper"></param>
+            <param name="attributeTypeCache">A local cache to resolve already resolved AttributeTypes</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Mapping.RdbmsToModelMapper.MapAttributeDefinition(Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition,Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeDefinition,Umbraco.Framework.TypeMapping.AbstractLookupHelper,Umbraco.Framework.TypeMapping.AbstractMappingEngine,System.Collections.Generic.ICollection{Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType})">
+            <summary>
+            Used to map attribute definitions when mapping the EntitySchema
+            </summary>
+            <param name="source"></param>
+            <param name="destination"></param>
+            <param name="lookupHelper"></param>
+            <param name="masterMapper"></param>
+            <param name="attributeTypeCache">A local cache object to resolve already resolved AttributeTypes</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Mapping.RdbmsToModelMapper.MapAttributeDefinition(Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition,Umbraco.Framework.TypeMapping.AbstractLookupHelper,Umbraco.Framework.TypeMapping.AbstractMappingEngine,System.Collections.Generic.ICollection{Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType})">
+            <summary>
+            Used to map attribute definitions when mapping the EntitySchema
+            </summary>
+            <param name="attributeDefinition"></param>
+            <param name="lookupHelper"></param>
+            <param name="masterMapper"></param>
+            <param name="attributeTypeCache">A local cache object to resolve already resolved AttributeTypes</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Mapping.RdbmsToModelMapper.GetEntityFromNodeRelation(Umbraco.Framework.Persistence.RdbmsModel.Node,Umbraco.Framework.TypeMapping.AbstractLookupHelper,Umbraco.Framework.TypeMapping.AbstractMappingEngine)">
+            <summary>
+            Returns an IRelatableEntity based on a Node, used in the Populate relations methods
+            </summary>
+            <param name="relationNode"></param>
+            <param name="lookupHelper"></param>
+            <param name="masterMapper"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Mapping.ManualMapperv2.TryGetDestinationType(System.Type,System.Type,System.Type@)">
+            <summary>
+            Tries to find a destination type given the <paramref name="sourceType"/> and a target type that is equal to or inherits from <paramref name="baseDestinationType"/>.
+            </summary>
+            <param name="sourceType">The source.</param>
+            <param name="baseDestinationType">Base type of the destination.</param>
+            <param name="destinationType">Type of the destination.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Mapping.ManualMapperv2.GetDynamicSupportedMappings">
+            <summary>
+            Gets supported mappings which can only be declared dynamically at runtime, as opposed to through attribution at compile time
+            by decoration with <see cref="!:TypeMapperAttribute"/>.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RelationSerializer">
+            <summary>
+            A class used to serialize/deserialize a relation
+            </summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeDecimalValue">
+            <summary>Class which represents the entity 'AttributeIntegerValue'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeDecimalValue.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeDecimalValue.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDecimalValue.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDecimalValue.Value">
+            <summary>Gets or sets the Value field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDecimalValue.ValueKey">
+            <summary>Gets or sets the ValueKey field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDecimalValue.Attribute">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeIntegerValue.Attribute - Attribute.AttributeIntegerValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDecimalValue.Locale">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeIntegerValue.Locale - Locale.AttributeIntegerValues (m:1)'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Mapping.ModelToRdbmsMapper.GetObjectReference``1(Umbraco.Framework.HiveId,Umbraco.Framework.TypeMapping.AbstractLookupHelper,System.Func{``0})">
+            <summary>
+            Gets a reference to an object if it already exists in the set maintained by the lookup helper, otherwise calls a factory to create a new instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="id">The id.</param>
+            <param name="lookupHelper">The lookup helper.</param>
+            <param name="factory">The factory.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.StringSerializationType.Serialize(Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute)">
+            <summary>
+            Serializes the specified value.
+            </summary>
+            <param name="value">The value.</param>        
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.StringSerializationType.Alias">
+            <summary>
+            Gets or sets the alias of the object. The alias is a string to which this object
+            can be referred programmatically, and is often a normalised version of the <see cref="P:Umbraco.Framework.IReferenceByName.Name"/> property.
+            </summary>
+            <value>The alias.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.StringSerializationType.Name">
+            <summary>
+            Gets or sets the name of the object. The name is a string intended to be human-readable, and
+            is often a more descriptive version of the <see cref="!:IReferenceByName.Alias"/> property.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Constants.SerializationTypes.StringSerializationType.DataSerializationType">
+            <summary>
+              Gets or sets the type of the data serialization.
+            </summary>
+            <value>The type of the data serialization.</value>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute.TryGetDefaultValue``1">
+            <summary>
+            Tries the get the default value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute.ValuesCollectionChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Handles when the Values collection changes
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute.AttributeDefinition">
+            <summary>
+            Gets or sets the type of the attribute.
+            </summary>
+            <value>The type of the attribute.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute.DynamicValue">
+            <summary>
+            Gets or sets the default value of the attribute. This is a shortcut property which stores the value as a default in the <see cref="P:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute.Values"/> dictionary.
+            </summary>
+            <value>The value.</value>
+            <remarks>
+            This will try to return the value from the dictionary with the default key, if it is null and there is an item in the dictionary it will return that singular item,
+            if there is more than 1 item in the dictionary, it will simply return the entire dictionary.
+            
+            Setting this value will only set the value in the Values dictionary based on the default key
+            </remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute.Values">
+            <summary>
+            Gets or sets the values of the attribute.
+            </summary>
+            <value>The values.</value>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection">
+            <summary>
+            Represents a collection of <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute"/> instances.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection.Reset(System.Collections.Generic.IEnumerable{Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute})">
+            <summary>
+            Resets the collection to only contain the <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute"/> instances referenced in the <paramref name="attributes"/> parameter, whilst maintaining
+            any validation delegates such as <see cref="P:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection.ValidateAdd"/>
+            </summary>
+            <param name="attributes">The attributes.</param>
+            <param name="validate">Validate the attributes against the known schema.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection.Reset(System.Collections.Generic.IEnumerable{Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute},System.Boolean)">
+            <summary>
+            Resets the collection to only contain the <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute"/> instances referenced in the <paramref name="attributes"/> parameter, whilst maintaining
+            any validation delegates such as <see cref="P:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection.ValidateAdd"/>
+            </summary>
+            <param name="attributes">The attributes.</param>
+            <param name="validate">Validate the attributes against the known schema.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection.#ctor(System.Func{Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection"/> class with a delegate responsible for validating the addition of <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute"/> instances.
+            </summary>
+            <param name="validationCallback">The validation callback.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection.Contains(System.String)">
+            <summary>
+            Determines whether this collection contains a <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute"/> whose alias matches the specified attribute name.
+            </summary>
+            <param name="attributeName">Name of the attribute.</param>
+            <returns><c>true</c> if the collection contains the specified attribute name; otherwise, <c>false</c>.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection.GetKeyForItem(Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute)">
+            <summary>
+            When implemented in a derived class, extracts the key from the specified element.
+            </summary>
+            <returns>
+            The key for the specified element.
+            </returns>
+            <param name="item">The element from which to extract the key.</param>
+        </member>
+        <member name="F:Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeValueCollection.DefaultAttributeValueKey">
+            <summary>
+            The key is "Value" by default because this is the default property name of PropertyEditors and serialization
+            will just use the property names.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.ClearAllRelationsWithProxy(Umbraco.Framework.Persistence.RdbmsModel.Node)">
+            <summary>
+            This will remove all of the nodes relations (incoming, outgoing, and cached) even though they are lazy loaded
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.Attribute``1(Umbraco.Framework.Persistence.Model.TypedEntity,System.String)">
+            <summary>
+            Gets an attribute from the specified entity.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity">The entity.</param>
+            <param name="alias">The alias.</param>
+            <returns></returns>
+            <remarks>This overload exists because it's not possible to have an optional parameter in an expression tree, so <see cref="M:Umbraco.Framework.Persistence.PersistenceExtensions.Attribute``1(Umbraco.Framework.Persistence.Model.TypedEntity,System.String,``0)"/> cannot be used in queries.</remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.Attribute``1(Umbraco.Framework.Persistence.Model.TypedEntity,System.String,``0)">
+            <summary>
+            Gets an attribute from the specified entity.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity">The entity.</param>
+            <param name="alias">The alias.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.InnerAttribute``1(Umbraco.Framework.Persistence.Model.TypedEntity,System.String,System.String)">
+            <summary>
+            Gets a value from an attribute with the specified value key
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity">The entity.</param>
+            <param name="alias">The alias.</param>
+            <param name="valueKey">The value key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.InnerAttribute``1(Umbraco.Framework.Persistence.Model.TypedEntity,System.String,System.String,``0)">
+            <summary>
+            Gets a value from an attribute with the specified value key
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity">The entity.</param>
+            <param name="alias">The alias.</param>
+            <param name="valueKey">The value key.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.TryAdd(Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection,Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute)">
+            <summary>
+            Adds a property to the collection if it doesn't exist and returns true, otherwise returns false
+            </summary>
+            <param name="attributeCollection"></param>
+            <param name="typedAttribute"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.SetValueOrAdd(Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection,Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute)">
+            <summary>
+            Sets
+            </summary>
+            <param name="attributeCollection"></param>
+            <param name="typedAttribute"></param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.TryAdd``1(Umbraco.Framework.Persistence.Model.EntityCollection{``0},``0)">
+            <summary>
+            this will add the entity to the collection if it doesn't exist, otherwise will return false
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="entity"></param>
+            <returns>Returns true if the addition was successful, otherwise false if the entity already existed</returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.TryAddAttributeDefinition(Umbraco.Framework.Persistence.Model.Attribution.MetaData.EntitySchema,Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeDefinition)">
+            <summary>
+            this will add the definition to the schema's attribute definition collection and attach it to the 'general group' if it doesn't exist 
+            otherwise will return false.
+            </summary>
+            <param name="schema"></param>
+            <param name="def"></param>
+            <returns>Returns true if the property was added otherwise returns false</returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.GetLatestDate``1(Umbraco.Framework.Persistence.Model.Versioning.EntitySnapshot{``0},Umbraco.Framework.RevisionStatusType)">
+            <summary>
+            Gets the latest date from a collection of <see cref="T:Umbraco.Framework.Persistence.Model.Versioning.RevisionData"/> where the element's <see cref="T:Umbraco.Framework.RevisionStatusType"/> matches
+            <paramref name="type"/>.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.GetLatestDate``1(Umbraco.Framework.Persistence.Model.Versioning.EntitySnapshot{``0},System.String)">
+            <summary>
+            Gets the latest date from an EntitySnapshot
+            <paramref name="alias"/>.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.GetValue(Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute,System.String)">
+            <summary>
+            Returns the value of the key value based on the key, if the key is not found, a null value is returned
+            </summary>
+            <param name="a"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.GetValueAsString(Umbraco.Framework.Persistence.Model.Attribution.TypedAttribute,System.String)">
+            <summary>
+            Returns the value of the key value based on the key as it's string value, if the key is not found, then an empty string is returned
+            </summary>
+            <param name="a"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.GetAttributeValueAsString(Umbraco.Framework.Persistence.Model.TypedEntity,System.String)">
+            <summary>
+            Gets the dynamic value from the attributes of the entity
+            </summary>
+            <param name="entity"></param>
+            <param name="attributeAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.GetAttributeValueAsString(Umbraco.Framework.Persistence.Model.TypedEntity,System.String,System.String)">
+            <summary>
+            Gets the keyed valued from the attributes of the entity
+            </summary>
+            <param name="entity"></param>
+            <param name="attributeAlias"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.GetAttributeValue(Umbraco.Framework.Persistence.Model.TypedEntity,System.String)">
+            <summary>
+            Returns the dynamic value from an attribute based on it's alias
+            </summary>
+            <param name="entity"></param>
+            <param name="attributeAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.GetAttributeValue(Umbraco.Framework.Persistence.Model.TypedEntity,System.String,System.String)">
+            <summary>
+            Returns the keyed value from an attribute based on it's alias
+            </summary>
+            <param name="entity"></param>
+            <param name="attributeAlias"></param>
+            <param name="valueKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.CopyToNewRevision``1(Umbraco.Framework.Persistence.Model.Versioning.Revision{``0})">
+            <summary>
+            Copies the specified revision.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="revision">The revision.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.CopyToNewRevision``1(Umbraco.Framework.Persistence.Model.Versioning.Revision{``0},Umbraco.Framework.RevisionStatusType)">
+            <summary>
+            Creates a new revision and sets the status on the entity
+            </summary>
+            <param name="revision"></param>
+            <param name="revisionStatusType"></param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.Setup``1(``0,System.String,System.String)">
+            <summary>
+            Sets up the specified entity with default values.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity">The entity.</param>
+            <param name="alias">An alias.</param>
+            <param name="name">A name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.Create``1(System.String,System.String)">
+            <summary>
+            Creates an instance of <typeparamref name="T"/> having a reference by string alias.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="alias">The alias.</param>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.CreateAttributeIn``1(System.String,System.String,Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeDefinition,Umbraco.Framework.Persistence.Abstractions.Attribution.MetaData.IAttributeSerializationDefinition,Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeGroup)">
+            <summary>
+            Creates an <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeDefinition"/> with a given <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeType"/> and references it to a given <see cref="T:Umbraco.Framework.Persistence.Model.Attribution.MetaData.AttributeGroup"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="alias">The alias.</param>
+            <param name="name">The name.</param>
+            <param name="attributeDefinition">The attribute type definition.</param>
+            <param name="serializationDefinition">The serialization definition.</param>
+            <param name="attributeGroup">The attribute group definition.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.CreateIn``1(System.String,System.String,Umbraco.Framework.Persistence.Model.EntityCollection{``0})">
+            <summary>
+            Creates an <see cref="T:Umbraco.Framework.Persistence.Model.AbstractEntity"/> and places it in the given <paramref name="entityCollection"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="alias">The alias.</param>
+            <param name="name">The name.</param>
+            <param name="entityCollection">The entity collection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.ContainsKey(Umbraco.Framework.Persistence.Model.Attribution.TypedAttributeCollection,System.String)">
+            <summary>
+            Determines whether the specified attributes contains key.
+            </summary>
+            <param name="attributes">The attributes.</param>
+            <param name="key">The key.</param>
+            <returns>
+              <c>true</c> if the specified attributes contains key; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.SetupFromSchema``1(Umbraco.Framework.Persistence.Model.TypedEntity)">
+            <summary>
+            Sets up the entity from schema.
+            </summary>
+            <typeparam name="TSchema">The type of the schema.</typeparam>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.PersistenceExtensions.SetupFromSchema(Umbraco.Framework.Persistence.Model.TypedEntity)">
+            <summary>
+            Sets up the entity from schema.
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.Model.EntityCollection`1">
+            <summary>
+            Represents a simple 1-dimensional keyed collection of entities
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.EntityCollection`1.Add(`0)">
+            <summary>
+            Adds an object to the end of the <see cref="T:Umbraco.Framework.Persistence.Model.EntityCollection`1"/> OR replaces an item if one with the same key already exists.
+            </summary>
+            <param name="item">The object to be added to the end of the <see cref="T:System.Collections.ObjectModel.Collection`1"/>. The value can be null for reference types.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.EntityCollection`1.GetKeyForItem(`0)">
+            <summary>
+            When implemented in a derived class, extracts the key from the specified element.
+            </summary>
+            <returns>
+            The key for the specified element.
+            </returns>
+            <param name="item">The element from which to extract the key.</param>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Versioning.Branch.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Versioning.Changeset.Branch">
+            <summary>
+            Gets or sets the branch in which this changeset resides.
+            </summary>
+            <value>The branch.</value>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.Model.Versioning.RevisionData.CreateDefault(Umbraco.Framework.HiveId,Umbraco.Framework.RevisionStatusType,System.DateTimeOffset,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Creates a RevisionData object based on a single changeset and a branch name of "default".
+            This object model is included to later support changesets and branching (May 2011 - APN).
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Versioning.RevisionData.Changeset">
+            <summary>
+            Gets or sets the changeset.
+            </summary>
+            <value>The changeset.</value>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.Model.Versioning.RevisionData.StatusType">
+            <summary>
+              Gets or sets the status of the entity.
+            </summary>
+            <value>The status.</value>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.Attribute">
+            <summary>Class which represents the entity 'Attribute'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Attribute.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.Attribute"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Attribute.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Attribute.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Attribute.AttributeDateValues">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDateValue.Attribute - Attribute.AttributeDateValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Attribute.AttributeDefinition">
+            <summary>Represents the navigator which is mapped onto the association 'Attribute.AttributeDefinition - AttributeDefinition.Attributes (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Attribute.AttributeIntegerValues">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeIntegerValue.Attribute - Attribute.AttributeIntegerValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Attribute.AttributeDecimalValues">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDecimalValue.Attribute - Attribute.AttributeDecimalValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Attribute.AttributeLongStringValues">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeLongStringValue.Attribute - Attribute.AttributeLongStringValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Attribute.AttributeStringValues">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeStringValue.Attribute - Attribute.AttributeStringValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Attribute.NodeVersion">
+            <summary>Represents the navigator which is mapped onto the association 'Attribute.NodeVersion - NodeVersion.Attributes (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeDateValue">
+            <summary>Class which represents the entity 'AttributeDateValue'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeDateValue.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeDateValue"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeDateValue.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDateValue.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDateValue.Value">
+            <summary>Gets or sets the Value field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDateValue.ValueKey">
+            <summary>Gets or sets the ValueKey field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDateValue.Attribute">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDateValue.Attribute - Attribute.AttributeDateValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDateValue.Locale">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDateValue.Locale - Locale.AttributeDateValues (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition">
+            <summary>Class which represents the entity 'AttributeDefinition'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.Ordinal">
+            <summary>
+            Gets or sets the ordinal.
+            </summary>
+            <value>The ordinal.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.Alias">
+            <summary>Gets or sets the Alias field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.Description">
+            <summary>Gets or sets the Description field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.Name">
+            <summary>Gets or sets the Name field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.XmlConfiguration">
+            <summary>Gets or sets the XmlConfiguration field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.Attributes">
+            <summary>Represents the navigator which is mapped onto the association 'Attribute.AttributeDefinition - AttributeDefinition.Attributes (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.AttributeDefinitionGroup">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDefinition.AttributeDefinitionGroup - AttributeDefinitionGroup.AttributeDefinitions (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.AttributeSchemaDefinition">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDefinition.AttributeSchemaDefinition - AttributeSchemaDefinition.AttributeDefinitions (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinition.AttributeType">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDefinition.AttributeType - AttributeType.AttributeDefinitions (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup">
+            <summary>Class which represents the entity 'AttributeDefinitionGroup'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.Node">
+            <summary>Class which represents the entity 'Node'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Node.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.Node"/> class.</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Node.DateCreated">
+            <summary>Gets or sets the DateCreated field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Node.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Node.IsDisabled">
+            <summary>Gets or sets the IsDisabled field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Node.IncomingRelations">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelation.EndNode - Node.IncomingRelations (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Node.OutgoingRelations">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelation.StartNode - Node.OutgoingRelations (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Node.IncomingRelationCaches">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelationCache.EndNode - Node.IncomingNodeRelationCaches (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Node.OutgoingRelationCaches">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelationCache.StartNode - Node.OutgoingRelationCaches (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Node.NodeVersions">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersion.Node - Node.NodeVersions (m:1)'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup.Alias">
+            <summary>Gets or sets the Alias field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup.Description">
+            <summary>Gets or sets the Description field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup.Name">
+            <summary>Gets or sets the Name field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup.AttributeDefinitions">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDefinition.AttributeDefinitionGroup - AttributeDefinitionGroup.AttributeDefinitions (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup.AttributeSchemaDefinition">
+            <summary>
+            Gets or sets the attribute schema definition.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeDefinitionGroup.Ordinal">
+            <summary>
+            Gets or sets the ordinal.
+            </summary>
+            <value>The ordinal.</value>
+            <remarks></remarks>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue">
+            <summary>Class which represents the entity 'AttributeIntegerValue'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue.Value">
+            <summary>Gets or sets the Value field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue.ValueKey">
+            <summary>Gets or sets the ValueKey field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue.Attribute">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeIntegerValue.Attribute - Attribute.AttributeIntegerValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeIntegerValue.Locale">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeIntegerValue.Locale - Locale.AttributeIntegerValues (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeLongStringValue">
+            <summary>Class which represents the entity 'AttributeLongStringValue'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeLongStringValue.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeLongStringValue"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeLongStringValue.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeLongStringValue.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeLongStringValue.Value">
+            <summary>Gets or sets the Value field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeLongStringValue.ValueKey">
+            <summary>Gets or sets the ValueKey field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeLongStringValue.Attribute">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeLongStringValue.Attribute - Attribute.AttributeLongStringValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeLongStringValue.Locale">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeLongStringValue.Locale - Locale.AttributeLongStringValues (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition">
+            <summary>Class which represents the entity 'AttributeSchemaDefinition'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.Alias">
+            <summary>Gets or sets the Alias field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.Description">
+            <summary>Gets or sets the Description field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.Name">
+            <summary>Gets or sets the Name field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.SchemaType">
+            <summary>Gets or sets the Name field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.XmlConfiguration">
+            <summary>Gets or sets the XmlConfiguration field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.AttributeDefinitions">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDefinition.AttributeSchemaDefinition - AttributeSchemaDefinition.AttributeDefinitions (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.ReferencedNodes">
+            <summary>
+            Represents all of the nodes that are referencing/using the attribute schema definition
+            </summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition.AttributeDefinitionGroups">
+            <summary>
+            Represents the navigator which is mapped onto the association 'AttributeDefinitionGroup.AttributeSchemaDefinition - AttributeSchemaDefinition.AttributeDefinitionGroups (m:1)'
+            </summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeStringValue">
+            <summary>Class which represents the entity 'AttributeStringValue'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeStringValue.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeStringValue"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeStringValue.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeStringValue.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeStringValue.Value">
+            <summary>Gets or sets the Value field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeStringValue.ValueKey">
+            <summary>Gets or sets the ValueKey field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeStringValue.Attribute">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeStringValue.Attribute - Attribute.AttributeStringValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeStringValue.Locale">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeStringValue.Locale - Locale.AttributeStringValues (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeType">
+            <summary>Class which represents the entity 'AttributeType'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.AttributeType"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.Alias">
+            <summary>Gets or sets the Alias field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.Description">
+            <summary>Gets or sets the Description field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.Name">
+            <summary>Gets or sets the Name field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.PersistenceTypeProvider">
+            <summary>Gets or sets the PersistenceTypeProvider field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.RenderTypeProvider">
+            <summary>Gets or sets the RenderTypeProvider field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.XmlConfiguration">
+            <summary>Gets or sets the XmlConfiguration field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.AttributeType.AttributeDefinitions">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDefinition.AttributeType - AttributeType.AttributeDefinitions (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.Locale">
+            <summary>Class which represents the entity 'Locale'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Locale.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.Locale"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.Locale.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Locale.Alias">
+            <summary>Gets or sets the Alias field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Locale.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Locale.LanguageIso">
+            <summary>Gets or sets the LanguageIso field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Locale.Name">
+            <summary>Gets or sets the Name field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Locale.AttributeDateValues">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeDateValue.Locale - Locale.AttributeDateValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Locale.AttributeIntegerValues">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeIntegerValue.Locale - Locale.AttributeIntegerValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Locale.AttributeLongStringValues">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeLongStringValue.Locale - Locale.AttributeLongStringValues (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.Locale.AttributeStringValues">
+            <summary>Represents the navigator which is mapped onto the association 'AttributeStringValue.Locale - Locale.AttributeStringValues (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation">
+            <summary>Class which represents the entity 'NodeRelation'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.DateCreated">
+            <summary>Gets or sets the DateCreated field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.Ordinal">
+            <summary>Gets or sets the Ordinal field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.EndNode">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelation.EndNode - Node.IncomingRelations (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.StartNode">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelation.StartNode - Node.OutgoingRelations (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.NodeRelationCaches">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelationCache.NodeRelation - NodeRelation.NodeRelationCaches (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.NodeRelationTags">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelationTag.NodeRelation - NodeRelation.NodeRelationTags (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelation.NodeRelationType">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelation.NodeRelationType - NodeRelationType.NodeRelations (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationCache">
+            <summary>Class which represents the entity 'NodeRelationCache'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationCache.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationCache"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationCache.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationCache.DistanceFromOriginal">
+            <summary>Gets or sets the DistanceFromOriginal field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationCache.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationCache.EndNode">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelationCache.EndNode - Node.IncomingNodeRelationCaches (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationCache.StartNode">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelationCache.StartNode - Node.OutgoingRelationCaches (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationCache.NodeRelation">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelationCache.NodeRelation - NodeRelation.NodeRelationCaches (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationTag">
+            <summary>Class which represents the entity 'NodeRelationTag'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationTag.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationTag"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationTag.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationTag.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationTag.Name">
+            <summary>Gets or sets the Name field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationTag.Value">
+            <summary>Gets or sets the Value field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationTag.NodeRelation">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelationTag.NodeRelation - NodeRelation.NodeRelationTags (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationType">
+            <summary>Class which represents the entity 'NodeRelationType'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationType.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationType"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationType.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationType.Alias">
+            <summary>Gets or sets the Alias field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationType.Description">
+            <summary>Gets or sets the Description field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationType.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationType.Name">
+            <summary>Gets or sets the Name field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeRelationType.NodeRelations">
+            <summary>Represents the navigator which is mapped onto the association 'NodeRelation.NodeRelationType - NodeRelationType.NodeRelations (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion">
+            <summary>Class which represents the entity 'NodeVersion'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.DateCreated">
+            <summary>Gets or sets the DateCreated field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.DefaultName">
+            <summary>Gets or sets the DefaultName field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.Attributes">
+            <summary>Represents the navigator which is mapped onto the association 'Attribute.NodeVersion - NodeVersion.Attributes (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.Node">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersion.Node - Node.NodeVersions (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.NodeVersionSchedules">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersionSchedule.NodeVersion - NodeVersion.NodeVersionSchedules (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.NodeVersionStatuses">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersionStatusHistory.NodeVersion - NodeVersion.NodeVersionStatuses (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersion.AttributeSchemaDefinition">
+            <summary>
+            Represents the navigator which is mapped onto the association 'NodeVersion.AttributeSchemaDefinition - AttributeSchemaDefinition.NodeVersion (1:m)'
+            </summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionSchedule">
+            <summary>Class which represents the entity 'NodeVersionSchedule'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionSchedule.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionSchedule"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionSchedule.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionSchedule.EndDate">
+            <summary>Gets or sets the EndDate field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionSchedule.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionSchedule.StartDate">
+            <summary>Gets or sets the StartDate field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionSchedule.NodeVersion">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersionSchedule.NodeVersion - NodeVersion.NodeVersionSchedules (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionSchedule.NodeVersionStatusType">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersionSchedule.NodeVersionStatusType - NodeVersionStatusType.NodeVersionSchedules (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusHistory">
+            <summary>Class which represents the entity 'NodeVersionStatusHistory'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusHistory.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusHistory"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusHistory.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusHistory.Date">
+            <summary>Gets or sets the Date field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusHistory.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusHistory.NodeVersion">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersionStatusHistory.NodeVersion - NodeVersion.NodeVersionStatuses (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusHistory.NodeVersionStatusType">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersionStatusHistory.NodeVersionStatusType - NodeVersionStatusType.NodeVersionStatuses (m:1)'</summary>
+        </member>
+        <member name="T:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType">
+            <summary>Class which represents the entity 'NodeVersionStatusType'</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType"/> class.</summary>
+        </member>
+        <member name="M:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType.GetMembersForEqualityComparison">
+            <summary>
+            Gets the natural id members.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType.Id">
+            <summary>Gets or sets the Id field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType.IsSystem">
+            <summary>Gets or sets the IsSystem field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType.Alias">
+            <summary>Gets or sets the Alias field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType.Name">
+            <summary>Gets or sets the Name field. </summary>	
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType.NodeVersionSchedules">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersionSchedule.NodeVersionStatusType - NodeVersionStatusType.NodeVersionSchedules (m:1)'</summary>
+        </member>
+        <member name="P:Umbraco.Framework.Persistence.RdbmsModel.NodeVersionStatusType.NodeVersionStatuses">
+            <summary>Represents the navigator which is mapped onto the association 'NodeVersionStatusHistory.NodeVersionStatusType - NodeVersionStatusType.NodeVersionStatuses (m:1)'</summary>
+        </member>
+    </members>
+</doc>

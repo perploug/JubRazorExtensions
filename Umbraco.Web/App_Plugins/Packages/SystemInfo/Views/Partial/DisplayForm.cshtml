@@ -1,0 +1,15 @@
+﻿@using Umbraco.Cms.Packages.SystemInfo.Models
+@model TestSurfaceFormModel
+
+<h4>@Model.SomeString</h4>
+
+<div>@(ViewBag.TestData ?? "")</div>
+<div>@(TempData["TestData"] ?? "")</div>
+
+@using (Html.BeginUmbracoForm("HandleFormSubmit", new Guid("98625300-6DF0-41AF-A432-83BD0232815A")))
+{
+    @Html.ValidationSummary(prefix:"MyTestForm")
+    @Html.EditorFor(x => Model, "", "MyTestForm")
+
+    <input type="submit"/>
+}

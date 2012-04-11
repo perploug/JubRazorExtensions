@@ -1,0 +1,11 @@
+﻿@model Umbraco.Cms.Web.UI.Models.RegisterModel
+
+@if (!User.Identity.IsAuthenticated)
+{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.EnablePartialViewValidation();
+    
+    @Html.EditorFor(x => Model, "RegisterFormTemplate", "RegisterForm")
+}
+<br />

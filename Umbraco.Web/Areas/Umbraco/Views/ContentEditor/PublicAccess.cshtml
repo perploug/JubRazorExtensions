@@ -1,0 +1,91 @@
+﻿@using System.Collections.Concurrent
+@using Umbraco.Framework.Persistence.Model.Constants
+@model Umbraco.Cms.Web.Model.BackOffice.Editors.PublicAccessModel
+@{
+    Layout = "../Shared/_DialogLayout.cshtml";  
+      
+    ViewBag.Title = "Manage public access";
+    ViewBag.Action = "PublicAccess";
+    
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.EnablePartialViewValidation();
+}
+@section Head {
+    @{
+        Html
+            .RequiresJs("Umbraco.Editors/PublicAccessDialog.js", "Scripts");
+    }
+    <script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+                Umbraco.Editors.PublicAccessDialog.getInstance().init({
+                    id: "@Model.Id",
+                    memberGroups: @Html.ToJsonString(@Model.AvailableUserGroups),
+                    selectedMemberGroupIds: @Html.ToJsonString(@Model.UserGroupIds)
+                });
+            });
+        })(jQuery);
+    </script>
+    <style type="text/css">
+        .transfer-list-wrapper { display: inline-block; }
+        .transfer-list-wrapper select { margin-top: 2px; }
+        .transfer-list { width: 150px !important;height: 150px !important;vertical-align: middle; }
+        .transfer-list-buttons { display: inline-block;vertical-align: middle; }
+    </style>
+}
+<div>
+    <h2>Manage public access</h2>
+    <div class="narrow-editor clearfix">              
+               
+        <div class="property-pane">
+            @*User Groups Dropdown*@
+            <div class="property-editor clearfix">
+                <div class="property-editor-label">Member Groups
+                <small>Choose the Member Groups that should be allowed access to this page.</small></div>
+                <div class="property-editor-control">
+                    <span class="transfer-list-wrapper">
+                        <strong>Available</strong><br />
+                        <select id="UserGroupIds_Source" size="2" class="transfer-list" data-bind="options: unselectedMemberGroups, optionsText: 'text', optionsValue: 'value', value: leftMemberGroupSelection"></select>
+                    </span>
+                    <div class="transfer-list-buttons">
+                        <button data-bind="enable: leftMemberGroupSelection, click: transferRight">&raquo;</button><br /><br />
+                        <button data-bind="enable: rightMemberGroupSelection, click: transferLeft">&laquo;</button>
+                    </div>
+                    <span class="transfer-list-wrapper">
+                        <strong>Selected</strong><br />
+                        <select id="UserGroupIds_Selected" size="2" name="UserGroupIds" class="transfer-list" data-bind="options: selectedMemberGroups, optionsText: 'text', optionsValue: 'value', value: rightMemberGroupSelection"></select>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <h2>Select the pages to redirect to for login and incase of an error.</h2>
+        <div class="property-pane" data-bind="stopBindings: true">
+            <div class="property-editor clearfix">
+                <div class="property-editor-label">Login Page
+                <small>Choose the page that contains the login form</small></div>
+                <div class="property-editor-control">
+                    @Html.TreePickerFor(x => Model.LoginPageId, new TreePickerRenderModel
+                    {
+                        TreeControllerId = new Guid(CorePluginConstants.ContentTreeControllerId),
+                        TreeVirtualRootId = FixedHiveIds.ContentVirtualRoot,
+                        StartNodeId = new HiveId(new Guid(CorePluginConstants.ContentTreeControllerId))
+                    })
+                </div>
+            </div>
+            <div class="property-editor clearfix">
+                <div class="property-editor-label">Error Page
+                <small>Choose the page to display when a member is authenticated, but does not have sufficient permissions.</small></div>
+                <div class="property-editor-control">
+                    @Html.TreePickerFor(x => Model.ErrorPageId, new TreePickerRenderModel
+                    {
+                        TreeControllerId = new Guid(CorePluginConstants.ContentTreeControllerId),
+                        TreeVirtualRootId = FixedHiveIds.ContentVirtualRoot,
+                        StartNodeId = new HiveId(new Guid(CorePluginConstants.ContentTreeControllerId))
+                    })
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

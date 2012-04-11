@@ -1,0 +1,1485 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Umbraco.Hive</name>
+    </assembly>
+    <members>
+        <member name="T:Umbraco.Hive.AbstractProviderBootstrapper">
+            <summary>
+            An abstraction of a bootstrapper implemented by providers in order to handle any install tasks
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.AbstractProviderBootstrapper.ConfigureApplication(System.String,System.Xml.Linq.XDocument,Umbraco.Framework.Dynamics.BendyObject)">
+            <summary>
+            Creates any necessary configuration files/transforms for the provider to operate
+            </summary>
+            <param name="configXml">The configuration xml file that needs to be written to</param>
+            <param name="installParams">
+            TODO: This is only a temporary way of passing arbitrary parameters to a provider to create its configuration,
+            we need to allow hive providers to return a model for which we display a form/installer for and then pass in that
+            model to the installParams
+            </param>
+            <param name="providerKey">The provider key for the provider that is being configured</param>
+        </member>
+        <member name="M:Umbraco.Hive.AbstractProviderBootstrapper.GetInstallStatus">
+            <summary>
+            Gets the current installation status of the provider.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.AbstractProviderBootstrapper.TryInstall">
+            <summary>
+            Attempts to run installation tasks and reports status.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Umbraco.Hive.AbstractProviderDependencyBuilder">
+            <summary>
+            An abstract type for creating Hive provider demand builders.
+            Derived types must have a parameterless constructor to make instantiating simpler.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.AbstractProviderDependencyBuilder.Build(Umbraco.Framework.DependencyManagement.IContainerBuilder,Umbraco.Framework.DependencyManagement.IBuilderContext)">
+            <summary>Builds the dependency demands required by this implementation. </summary>
+            <param name="containerBuilder">The <see cref="T:Umbraco.Framework.DependencyManagement.IContainerBuilder"/> .</param>
+            <param name="context">The context for this building session containing configuration etc.</param>
+        </member>
+        <member name="M:Umbraco.Hive.AbstractProviderDependencyBuilder.Initialise(Umbraco.Framework.DependencyManagement.IBuilderContext)">
+            <summary>
+            Initialises the provider dependency builder. This method is run by <see cref="T:Umbraco.Hive.DependencyManagement.ProviderDemandRunner"/> prior to it calling <see cref="M:Umbraco.Hive.AbstractProviderDependencyBuilder.Build(Umbraco.Framework.DependencyManagement.IContainerBuilder,Umbraco.Framework.DependencyManagement.IBuilderContext)"/>.
+            </summary>
+            <param name="builderContext">The builder context.</param>
+        </member>
+        <member name="M:Umbraco.Hive.AbstractProviderDependencyBuilder.GetProviderBootstrapperFactory(Umbraco.Framework.DependencyManagement.IBuilderContext)">
+            <summary>
+            Gets the provider bootstrapper factory. The <see cref="T:Umbraco.Hive.AbstractProviderDependencyBuilder"/> will use this to register the <see cref="T:Umbraco.Hive.AbstractProviderBootstrapper"/> against the ProviderKey.
+            </summary>
+            <param name="builderContext">The builder context.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.AbstractProviderDependencyBuilder.GetProviderDependencyHelperFactory(Umbraco.Framework.DependencyManagement.IBuilderContext)">
+            <summary>
+            Gets the provider dependency helper factory. If a provider requires dependencies with a specific registration key, use this delegate to register a <see cref="T:Umbraco.Hive.ProviderSupport.ProviderDependencyHelper"/> with the appropriate
+            keyed dependencies. Otherwise, if this method returns null, <see cref="T:Umbraco.Hive.DependencyManagement.ProviderDemandRunner"/> will register a <see cref="T:Umbraco.Hive.ProviderSupport.NullProviderDependencyHelper"/> in its place.
+            </summary>
+            <param name="builderContext">The builder context.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.AbstractProviderDependencyBuilder.ValidateProviderConfigSection``1(Umbraco.Framework.ProviderSupport.AbstractProviderConfigurationSection,Umbraco.Hive.Configuration.TypeLoaderElement)">
+            <summary>
+            Validates the provider config section.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="configuration">The configuration.</param>
+            <param name="typeLoader">The type loader.</param>
+            <returns>true if the validation succeeded or false if it doesn't and will log a warning</returns>
+        </member>
+        <member name="P:Umbraco.Hive.AbstractProviderDependencyBuilder.ProviderKey">
+            <summary>
+            This is the unique provider key which is unique to readers and writers. It is used for identifiying a reader or writer
+            and is used in setting up the providers DemandBuilder
+            </summary>
+        </member>
+        <member name="P:Umbraco.Hive.AbstractProviderDependencyBuilder.RegistryConfigElement">
+            <summary>
+            Gets or sets the registering config element, if this builder has been invoked as a result of a configuration entry.
+            </summary>
+            <value>The registry config element.</value>
+        </member>
+        <member name="P:Umbraco.Hive.AbstractProviderDependencyBuilder.CanBuild">
+            <summary>
+            Gets or sets a value indicating whether this instance can build dependencies. Used by <see cref="T:Umbraco.Hive.DependencyManagement.ProviderDemandRunner"/> to determine if the <see cref="M:Umbraco.Hive.AbstractProviderDependencyBuilder.Build(Umbraco.Framework.DependencyManagement.IContainerBuilder,Umbraco.Framework.DependencyManagement.IBuilderContext)"/> method on this demand builder should be run.
+            </summary>
+            <value><c>true</c> if this instance can build; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Umbraco.Hive.AbstractProviderSetup.PriorityOrdinal">
+            <summary>
+            Gets or sets the priority ordinal of the provider.
+            </summary>
+            <value>The priority ordinal.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.AbstractProviderSetup.ProviderMetadata">
+            <summary>
+            Gets the provider metadata.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.AbstractProviderSetup.FrameworkContext">
+            <summary>
+            Gets or sets the framework context.
+            </summary>
+            <value>The framework context.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.AbstractProviderSetup.Bootstrapper">
+            <summary>
+            Gets or sets the bootstrapper.
+            </summary>
+            <value>The bootstrapper.</value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.CacheHelper.DisposeResources">
+            <summary>
+            Handles the disposal of resources. Derived from abstract class <see cref="T:Umbraco.Framework.DisposableObject"/> which handles common required locking logic.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.CacheDemandBuilder.Build(Umbraco.Framework.DependencyManagement.IContainerBuilder,Umbraco.Framework.DependencyManagement.IBuilderContext)">
+            <summary>Builds the dependency demands required by this implementation. </summary>
+            <param name="containerBuilder">The <see cref="T:Umbraco.Framework.DependencyManagement.IContainerBuilder"/> .</param>
+            <param name="context">The context for this building session containing configuration etc.</param>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.CacheDemandBuilder.Initialise(Umbraco.Framework.DependencyManagement.IBuilderContext)">
+            <summary>
+            Initialises the provider dependency builder. This method is run by <see cref="T:Umbraco.Hive.DependencyManagement.ProviderDemandRunner"/> prior to it calling <see cref="M:Umbraco.Hive.AbstractProviderDependencyBuilder.Build(Umbraco.Framework.DependencyManagement.IContainerBuilder,Umbraco.Framework.DependencyManagement.IBuilderContext)"/>.
+            </summary>
+            <param name="builderContext">The builder context.</param>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.CacheDemandBuilder.GetProviderBootstrapperFactory(Umbraco.Framework.DependencyManagement.IBuilderContext)">
+            <summary>
+            Gets the provider bootstrapper factory. The <see cref="T:Umbraco.Hive.AbstractProviderDependencyBuilder"/> will use this to register the <see cref="T:Umbraco.Hive.AbstractProviderBootstrapper"/> against the ProviderKey.
+            </summary>
+            <param name="builderContext">The builder context.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.CacheDemandBuilder.GetProviderDependencyHelperFactory(Umbraco.Framework.DependencyManagement.IBuilderContext)">
+            <summary>
+            Gets the provider dependency helper factory. If a provider requires dependencies with a specific registration key, use this delegate to register a <see cref="T:Umbraco.Hive.ProviderSupport.ProviderDependencyHelper"/> with the appropriate
+            keyed dependencies. Otherwise, if this method returns null, <see cref="T:Umbraco.Hive.DependencyManagement.ProviderDemandRunner"/> will register a <see cref="T:Umbraco.Hive.ProviderSupport.NullProviderDependencyHelper"/> in its place.
+            </summary>
+            <param name="builderContext">The builder context.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.DependencyHelper.DisposeResources">
+            <summary>
+            Handles the disposal of resources. Derived from abstract class <see cref="T:Umbraco.Framework.DisposableObject"/> which handles common required locking logic.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Hive.InMemoryProvider.DependencyHelper.CacheHelper">
+            <summary>
+            Gets or sets the cache helper.
+            </summary>
+            <value>The helper.</value>
+        </member>
+        <member name="T:Umbraco.Hive.ProviderSupport.AbstractReadonlyRepositoryFactory`1">
+            <summary>
+            Represents a Hive provider's factory for sessions that have read operations.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.IProviderReadonlyRepositoryFactory`1.GetReadonlyRepository">
+            <summary>
+            Gets an <see cref="T:Umbraco.Hive.ProviderSupport.AbstractProviderRepository"/> of type <see cref="!:T"/>. It will have only read operations.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IProviderReadonlyRepositoryFactory`1.ProviderMetadata">
+            <summary>
+            Gets the provider metadata.
+            </summary>
+            <value>The provider metadata.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IProviderReadonlyRepositoryFactory`1.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <value>The framework context.</value>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.AbstractReadonlyRepositoryFactory`1.GetReadonlyRepository">
+            <summary>
+            Gets an <see cref="T:Umbraco.Hive.ProviderSupport.AbstractProviderRepository"/> of type <see cref="!:T"/>. It will have only read operations.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractReadonlyRepositoryFactory`1.DependencyHelper">
+            <summary>
+            Gets or sets the dependency helper for this provider.
+            </summary>
+            <value>The dependency helper.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractReadonlyRepositoryFactory`1.FrameworkContext">
+            <summary>
+            Gets or sets the framework context.
+            </summary>
+            <value>The framework context.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractReadonlyRepositoryFactory`1.ProviderMetadata">
+            <summary>
+            Gets or sets the provider metadata.
+            </summary>
+            <value>The provider metadata.</value>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.EntityRevisionRepositoryFactory.DisposeResources">
+            <summary>
+            Handles the disposal of resources. Derived from abstract class <see cref="T:Umbraco.Framework.DisposableObject"/> which handles common required locking logic.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.EntityRevisionRepositoryFactory.GetReadonlyRepository">
+            <summary>
+            Gets an <see cref="T:Umbraco.Hive.ProviderSupport.AbstractReadonlyRevisionRepository`1"/>. It will have only read operations.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IRequiresHiveContext.HiveContext">
+            <summary>
+            Gets or sets the repository context.
+            </summary>
+            <value>The repository context.</value>
+        </member>
+        <member name="F:Umbraco.Hive.ProviderSupport.AbstractProviderRepository.SessionId">
+            <summary>
+            Gets a unique Id for this session
+            </summary>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractProviderRepository.HiveContext">
+            <summary>
+            Gets or sets the repository context.
+            </summary>
+            <value>The repository context.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractProviderRepository.CanRead">
+            <summary>
+            Gets or sets a value indicating whether this instance can read.
+            </summary>
+            <value><c>true</c> if this instance can read; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractProviderRepository.RepositoryScopedCache">
+            <summary>
+            Gets or sets the unit-scoped cache.
+            </summary>
+            <value>The unit-scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractProviderRepository.ProviderMetadata">
+            <summary>
+            Gets or sets the provider metadata.
+            </summary>
+            <value>The provider metadata.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractProviderRepository.FrameworkContext">
+            <summary>
+            Gets or sets the framework context.
+            </summary>
+            <value>The framework context.</value>
+        </member>
+        <member name="M:Umbraco.Hive.ICoreReadonlyRelationsRepository.GetBranchRelations(Umbraco.Framework.HiveId,Umbraco.Framework.Persistence.Model.Associations.RelationType)">
+            <summary>
+            Gets relations on the same branch. A branch is considered to be where elements have the same parent, with the same relation type.
+            Implementors should also return the relation describing the requested sibling.
+            </summary>
+            <param name="siblingId">The sibling id.</param>
+            <param name="relationType">Type of the relation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.ICoreReadonlyRepository`1.Get``1(System.Boolean,Umbraco.Framework.HiveId[])">
+            <summary>
+            Gets a sequence of <see cref="!:TEntity"/> matching the specified ids.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="allOrNothing">If set to <c>true</c> all ids must match in order to return any <typeparamref name="TEntity"/> instances.</param>
+            <param name="ids">The ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.ICoreReadonlyRepository`1.GetAll``1">
+            <summary>
+            Gets all <see cref="!:TEntity"/> in the repository.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <returns>An enumerable sequence of <see cref="!:TEntity"/> containing all that may be found in the repository. Returns a sequence of length 0 if none is found.</returns>
+        </member>
+        <member name="M:Umbraco.Hive.ICoreReadonlyRepository`1.Exists``1(Umbraco.Framework.HiveId)">
+            <summary>
+            Identifies if a <see cref="!:TEntity"/> with matching <paramref name="id"/> can be found in this repository.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="id">The id.</param>
+            <returns><code>true</code> if the item with <paramref name="id"/> can be found, otherwise <code>false</code>.</returns>
+        </member>
+        <member name="P:Umbraco.Hive.IReadonlyProviderRelationsRepository.RepositoryScopedCache">
+            <summary>
+            Gets or sets the unit-scoped cache.
+            </summary>
+            <value>The unit-scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.IReadonlyProviderRelationsRepository.ProviderMetadata">
+            <summary>
+            Gets the provider metadata.
+            </summary>
+            <value>The provider metadata.</value>
+        </member>
+        <member name="P:Umbraco.Hive.IReadonlyProviderRelationsRepository.CanReadRelations">
+            <summary>
+            Gets a value indicating whether this instance can read relations.
+            </summary>
+            <value>
+            	<c>true</c> if this instance can read relations; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IReadonlyProviderRepository`1.FrameworkContext">
+            <summary>
+            Gets or sets the framework context.
+            </summary>
+            <value>The framework context.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IReadonlyProviderRepository`1.RepositoryScopedCache">
+            <summary>
+            Gets or sets the unit-scoped cache.
+            </summary>
+            <value>The unit-scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IReadonlyProviderRepository`1.CanRead">
+            <summary>
+            Gets or sets a value indicating whether this instance can read.
+            </summary>
+            <value><c>true</c> if this instance can read; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IReadonlyEntityRepository.Revisions">
+            <summary>
+            Gets the revisions session.
+            </summary>
+            <value>The revisions.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IReadonlyEntityRepository.Schemas">
+            <summary>
+            Gets the schemas session.
+            </summary>
+            <value>The schemas.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IProviderReadonlyEntityRepositoryFactory.SchemaRepositoryFactory">
+            <summary>
+            Gets the schema session factory.
+            </summary>
+            <value>The schema session factory.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IProviderReadonlyEntityRepositoryFactory.RevisionRepositoryFactory">
+            <summary>
+            Gets the revision session factory.
+            </summary>
+            <value>The revision session factory.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractReadonlyEntityRepositoryFactory.SchemaRepositoryFactory">
+            <summary>
+            Gets or sets the schema session factory.
+            </summary>
+            <value>The schema session factory.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractReadonlyEntityRepositoryFactory.RevisionRepositoryFactory">
+            <summary>
+            Gets or sets the revision session factory.
+            </summary>
+            <value>The revision session factory.</value>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.IProviderEntityRepositoryFactory.GetRepository">
+            <summary>
+            Gets the session from the factory.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IProviderEntityRepositoryFactory.SchemaRepositoryFactory">
+            <summary>
+            Gets the schema session factory.
+            </summary>
+            <value>The schema session factory.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IProviderEntityRepositoryFactory.RevisionRepositoryFactory">
+            <summary>
+            Gets the revision session factory.
+            </summary>
+            <value>The revision session factory.</value>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.AbstractEntityRepositoryFactory.GetRepository">
+            <summary>
+            Gets the session from the factory.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractEntityRepositoryFactory.SchemaRepositoryFactory">
+            <summary>
+            Gets or sets the schema session factory.
+            </summary>
+            <value>The schema session factory.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractEntityRepositoryFactory.RevisionRepositoryFactory">
+            <summary>
+            Gets or sets the revision session factory.
+            </summary>
+            <value>The revision session factory.</value>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.EntityRepositoryFactory.DisposeResources">
+            <summary>
+            Handles the disposal of resources. Derived from abstract class <see cref="T:Umbraco.Framework.DisposableObject"/> which handles common required locking logic.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.EntityRepositoryFactory.GetReadonlyRepository">
+            <summary>
+            Gets an <see cref="T:Umbraco.Hive.ProviderSupport.AbstractReadonlyEntityRepository"/>. It will have only read operations.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.EntityRepositoryFactory.GetRepository">
+            <summary>
+            Gets the session from the factory.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IReadonlyProviderRevisionRepository`1.RelatedEntitiesLoader">
+            <summary>
+            Gets the related entities delegate. This is used to provide returned Revisions' entities RelationProxyCollection with a delegate
+            back to the relevant AbstractEntityRepository that may auto-load relations.
+            </summary>
+            <value>The related entities delegate.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractReadonlyRevisionRepository`1.RelatedEntitiesLoader">
+            <summary>
+            Gets the related entities delegate. This is used to provide returned Revisions' entities RelationProxyCollection with a delegate
+            back to the relevant AbstractEntityRepository that may auto-load relations.
+            </summary>
+            <value>The related entities delegate.</value>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.AbstractRevisionRepository`1.AddOrUpdate``1(Umbraco.Framework.Persistence.Model.Versioning.Revision{``0})">
+            <summary>
+            Adds or updates a Revision. If an incoming <paramref name="revision"/> does not have an Id already, its attribute ids will be cleared
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="revision"></param>
+            <remarks>
+            This does not create a new revision, if an existing revision is passed in then it will simply be updated.
+            To create a new revision, either pass a new Revision{T} to this method or use the Add extension method.
+            </remarks>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.EntityRevisionRepository.DisposeResources">
+            <summary>
+            Handles the disposal of resources. Derived from abstract class <see cref="T:Umbraco.Framework.DisposableObject"/> which handles common required locking logic.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.SchemaRepository.DisposeResources">
+            <summary>
+            Handles the disposal of resources. Derived from abstract class <see cref="T:Umbraco.Framework.DisposableObject"/> which handles common required locking logic.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.SchemaRepository.Exists``1(Umbraco.Framework.HiveId)">
+            <summary>
+            Identifies if a <see cref="!:TEntity"/> with matching <paramref name="id"/> can be found in this repository.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam><param name="id">The id.</param>
+            <returns>
+            <code>
+            true
+            </code>
+             if the item with <paramref name="id"/> can be found, otherwise 
+            <code>
+            false
+            </code>
+            .
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.InMemoryProvider.SchemaRepository.CanReadRelations">
+            <summary>
+            Gets a value indicating whether this instance can read relations.
+            </summary>
+            <value>
+            <c>true</c> if this instance can read relations; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.SchemaRepositoryFactory.DisposeResources">
+            <summary>
+            Handles the disposal of resources. Derived from abstract class <see cref="T:Umbraco.Framework.DisposableObject"/> which handles common required locking logic.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.InMemoryProvider.SchemaRepositoryFactory.GetReadonlyRepository">
+            <summary>
+            Gets an <see cref="T:Umbraco.Hive.ProviderSupport.AbstractReadonlySchemaRepository"/>. It will have only read operations.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.HiveConfigSection.ProviderMappings">
+            <summary>
+            Gets or sets the provider groups.
+            </summary>
+            <value>The provider groups.</value>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.PersistenceTypeLoaderElement.Key">
+            <summary>
+            This is the unique provider key which is unique to readers and writers. It is used for identifiying a reader or writer
+            and is used in setting up the providers DemandBuilder
+            </summary>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.PersistenceTypeLoaderElement.Alias">
+            <summary>
+            This is the providers Alias which is common between the providers readers and writers. It is used for creating <see cref="T:Umbraco.Framework.HiveId"/> objects
+            and for creating configuration sections for providers
+            </summary>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.ProviderMappingElementCollection.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>
+            The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.ProviderMappingElementCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <returns>
+            The name of the collection; otherwise, an empty string. The default is an empty string.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.ReaderTypeReferenceElementCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <returns>
+            The name of the collection; otherwise, an empty string. The default is an empty string.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.ReadWriterTypeReferenceElementCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <returns>
+            The name of the collection; otherwise, an empty string. The default is an empty string.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.TypeLoaderElementCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <returns>
+            The name of the collection; otherwise, an empty string. The default is an empty string.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.UriMatchElementCollection.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>
+            The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.Configuration.UriMatchElementCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <returns>
+            The name of the collection; otherwise, an empty string. The default is an empty string.
+            </returns>
+        </member>
+        <member name="M:Umbraco.Hive.DemandBuilders.LoadFromPersistenceConfig.Build(Umbraco.Framework.DependencyManagement.IContainerBuilder,Umbraco.Framework.DependencyManagement.IBuilderContext)">
+            <summary>Builds the dependency demands required by this implementation. </summary>
+            <param name="containerBuilder">The <see cref="T:Umbraco.Framework.DependencyManagement.IContainerBuilder"/> .</param>
+            <param name="context">The context for this building session containing configuration etc.</param>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.CreateDeepCopyToNewParentInRepo``1(``0,Umbraco.Framework.Persistence.Model.IRelatableEntity,Umbraco.Framework.Persistence.Model.Associations.AbstractRelationType,System.Int32,Umbraco.Hive.ProviderGrouping.IGroupUnit{Umbraco.Hive.RepositoryTypes.IProviderTypeFilter},Umbraco.Framework.Persistence.Model.Associations.RelationMetaDatum[])">
+            <summary>
+            Creates a deep copy of an object and adds the copied children to the repository. Does not add the root duplicate to the repo, the caller should do this.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="original">The original.</param>
+            <param name="newParent">The new parent.</param>
+            <param name="relationType">Type of the relation.</param>
+            <param name="ordinal">The ordinal.</param>
+            <param name="unitOfWork">The unit of work.</param>
+            <param name="metaData">The meta data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.GetEntityBaseType(System.Type)">
+            <summary>
+            Based on the type passed in, determines what base entity type it is, if it is not found to be a base entity type, an exception is thrown
+            </summary>
+            <param name="e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.GetEntityBaseType(Umbraco.Framework.Persistence.Model.AbstractEntity)">
+            <summary>
+            Determines what kind of entity it is and returns its base type
+            </summary>
+            <param name="e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.AssignIds``1(Umbraco.Framework.Persistence.Model.Versioning.Revision{``0},System.Func{Umbraco.Framework.HiveId})">
+            <summary>
+            Iterates through all identifiable items in the object graph and assigns Ids to entities that don't have an id assigned using the idGenerator.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="idGenerator"></param>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.AssignIds(Umbraco.Framework.IReferenceByHiveId,System.Func{Umbraco.Framework.HiveId})">
+            <summary>
+            Iterates through all identifiable items in the object graph and assigns Ids to entities that don't have an id assigned using the idGenerator.
+            </summary>
+            <param name="obj"></param>
+            <param name="idGenerator"></param>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.GetAllIdentifiableItems``1(Umbraco.Framework.Persistence.Model.Versioning.Revision{``0})">
+            <summary>
+            Returns a list of all identifyable items in a Revision{T}
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="revision"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.GetAllIdentifiableItems(Umbraco.Framework.IReferenceByHiveId)">
+            <summary>
+            Returns a list of all associated IReferenceByHiveId entities associated with the entity type passed 
+            in. This will recusively find all entities attached to the item.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.FindNewEntitiesInGraph(Umbraco.Framework.Persistence.Model.AbstractEntity)">
+            <summary>
+            This recursively finds all 'new' entities in the object graph which require Ids
+            </summary>
+            <param name="e">The entity to search on and its related entities</param>
+            <returns></returns>
+            <remarks>
+            TODO: Do we need to support checking Relations here?
+            </remarks>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.PublishedDate(Umbraco.Framework.Persistence.Model.Versioning.EntitySnapshot{Umbraco.Framework.Persistence.Model.TypedEntity})">
+            <summary>
+            Returns the published date if it is published, otherwise returns null
+            </summary>
+            <param name="rev"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.IsPublished(Umbraco.Framework.Persistence.Model.Versioning.EntitySnapshot{Umbraco.Framework.Persistence.Model.TypedEntity})">
+            <summary>
+            Determines whether the specified rev is published.
+            </summary>
+            <param name="rev">The rev.</param>
+            <returns>
+              <c>true</c> if the specified rev is published; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Umbraco.Hive.EntityExtensions.IsPublishPending(Umbraco.Framework.Persistence.Model.Versioning.EntitySnapshot{Umbraco.Framework.Persistence.Model.TypedEntity})">
+            <summary>
+            Determines whether the revision has a pending publish to be made
+            </summary>
+            <param name="rev">The rev.</param>
+            <returns>
+              <c>true</c> if [is publish pending] [the specified rev]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.HiveEntityPostActionEventArgs.Entity">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveEntityPostActionEventArgs.ScopedCache">
+            <summary>
+            Gets or sets the scoped cache.
+            </summary>
+            <value>The scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveRevisionPostActionEventArgs.Entity">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveRevisionPostActionEventArgs.ScopedCache">
+            <summary>
+            Gets or sets the scoped cache.
+            </summary>
+            <value>The scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveQueryResultEventArgs.Results">
+            <summary>
+            Gets or sets the results.
+            </summary>
+            <value>The results.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveQueryResultEventArgs.QueryDescription">
+            <summary>
+            Gets or sets the query description.
+            </summary>
+            <value>The query description.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveQueryResultEventArgs.ScopedCache">
+            <summary>
+            Gets or sets the scoped cache.
+            </summary>
+            <value>The scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.AbstractHiveEventArgs.ScopedCache">
+            <summary>
+            Gets or sets the scoped cache.
+            </summary>
+            <value>The scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveEntityPreActionEventArgs.Entity">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveEntityPreDeletionEventArgs.Id">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveEntityPostDeletionEventArgs.Id">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveRevisionPreActionEventArgs.Entity">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveRelationPreActionEventArgs.Relation">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveRelationPostActionEventArgs.Relation">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveRelationByIdPreActionEventArgs.Relation">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="P:Umbraco.Hive.HiveRelationByIdPostActionEventArgs.Relation">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>The entity.</value>
+        </member>
+        <member name="M:Umbraco.Hive.IHiveManager.GetAllReadProviders">
+            <summary>
+            Gets all the read providers registered with this manager.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.IHiveManager.GetAllReadWriteProviders">
+            <summary>
+            Gets all read write providers registered with this manager.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.IHiveManager.GetReader``1">
+            <summary>
+            Gets a <see cref="T:Umbraco.Hive.ProviderGrouping.ReadonlyGroupUnitFactory`1"/> for a group of providers, by finding a matching group in the <see cref="P:Umbraco.Hive.IHiveManager.ProviderGroups"/> collection where the
+            provider's mapping group root Uri matches the value with which <typeparamref name="TFilter"/> has been decorated. <typeparamref name="TFilter"/> must be decorated
+            with a <see cref="T:Umbraco.Hive.ProviderGrouping.RepositoryTypeAttribute"/> containing the provider group root Uri.
+            </summary>
+            <typeparam name="TFilter">The <see cref="T:Umbraco.Hive.RepositoryTypes.IProviderTypeFilter"/> used to create extension methods against this provider group.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.IHiveManager.GetWriter``1">
+            <summary>
+            Gets a <see cref="T:Umbraco.Hive.ProviderGrouping.GroupUnitFactory`1"/> for a group of providers, by finding a matching group in the <see cref="P:Umbraco.Hive.IHiveManager.ProviderGroups"/> collection where the
+            provider's mapping group root Uri matches the value with which <typeparamref name="TFilter"/> has been decorated. <typeparamref name="TFilter"/> must be decorated
+            with a <see cref="T:Umbraco.Hive.ProviderGrouping.RepositoryTypeAttribute"/> containing the provider group root Uri.
+            </summary>
+            <typeparam name="TFilter">The <see cref="T:Umbraco.Hive.RepositoryTypes.IProviderTypeFilter"/> used to create extension methods against this provider group.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.IHiveManager.GetReader``1(System.Uri)">
+            <summary>
+            Gets a <see cref="T:Umbraco.Hive.ProviderGrouping.ReadonlyGroupUnitFactory`1"/> for a group of providers, by finding a matching group in the <see cref="P:Umbraco.Hive.IHiveManager.ProviderGroups"/> collection where the
+            provider's mapping group root Uri matches <paramref name="providerMappingRoot"/>. <typeparamref name="TFilter"/> is ignored when searching for a matching provider group,
+            but can still be used to assign specific extension methods to this provider group request.
+            </summary>
+            <typeparam name="TFilter">The type of the filter.</typeparam>
+            <param name="providerMappingRoot">The provider mapping root.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.IHiveManager.GetReader(System.Uri)">
+            <summary>
+            Gets a <see cref="T:Umbraco.Hive.ProviderGrouping.ReadonlyGroupUnitFactory"/> for a group of providers, by finding a matching group in the <see cref="P:Umbraco.Hive.IHiveManager.ProviderGroups"/> collection where the
+            provider's mapping group root Uri matches <paramref name="providerMappingRoot"/>.
+            </summary>
+            <param name="providerMappingRoot">The provider mapping root.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.IHiveManager.GetWriter``1(System.Uri)">
+            <summary>
+            Gets a <see cref="T:Umbraco.Hive.ProviderGrouping.GroupUnitFactory`1"/> for a group of providers, by finding a matching group in the <see cref="P:Umbraco.Hive.IHiveManager.ProviderGroups"/> collection where the
+            provider's mapping group root Uri matches <paramref name="providerMappingRoot"/>. <typeparamref name="TFilter"/> is ignored when searching for a matching provider group,
+            but can still be used to assign specific extension methods to this provider group request.
+            </summary>
+            <typeparam name="TFilter">The type of the filter.</typeparam>
+            <param name="providerMappingRoot">The provider mapping root.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.IHiveManager.GetWriter(System.Uri)">
+            <summary>
+            Gets a <see cref="T:Umbraco.Hive.ProviderGrouping.GroupUnitFactory"/> for a group of providers, by finding a matching group in the <see cref="P:Umbraco.Hive.IHiveManager.ProviderGroups"/> collection where the
+            provider's mapping group root Uri matches <paramref name="providerMappingRoot"/>.
+            </summary>
+            <param name="providerMappingRoot">The provider mapping root.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.IHiveManager.PerfCounterManager">
+            <summary>
+            Gets the perf counter manager.
+            </summary>
+            <value>The perf counter manager.</value>
+        </member>
+        <member name="P:Umbraco.Hive.IHiveManager.ProviderGroups">
+            <summary>
+            Gets the provider groups managed by this <see cref="T:Umbraco.Hive.IHiveManager"/>.
+            </summary>
+            <value>The provider groups.</value>
+        </member>
+        <member name="P:Umbraco.Hive.IHiveManager.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <value>The framework context.</value>
+        </member>
+        <member name="P:Umbraco.Hive.IHiveManager.ManagerId">
+            <summary>
+            Gets the manager instance id.
+            </summary>
+            <value>The manager id.</value>
+        </member>
+        <member name="P:Umbraco.Hive.IHiveManager.Context">
+            <summary>
+            Gets the context.
+            </summary>
+            <value>The context.</value>
+        </member>
+        <member name="M:Umbraco.Hive.IUnit.Complete">
+            <summary>
+            Completes this unit of work.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.IUnit.Abandon">
+            <summary>
+            Abandons this unit of work and its changes.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Hive.IUnit.UnitScopedCache">
+            <summary>
+            Gets the unit-scoped cache.
+            </summary>
+            <value>The unit scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.ISchemaRepositoryGroup`1.Revisions">
+            <summary>
+            Used to access providers that can get or set revisions for <see cref="T:Umbraco.Framework.Persistence.Model.AbstractSchemaPart"/> types.
+            </summary>
+            <value>The revisions.</value>
+        </member>
+        <member name="P:Umbraco.Hive.Linq.QueryableDataSourceWrapper.HiveContext">
+            <summary>
+            Gets or sets the repository context.
+            </summary>
+            <value>The repository context.</value>
+        </member>
+        <member name="P:Umbraco.Hive.Linq.QueryableDataSourceWrapper.ContainerScopedCache">
+            <summary>
+            Gets or sets the cache supplied by the container of this query.
+            </summary>
+            <value>The container-scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.Linq.QueryableDataSourceWrapper.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Umbraco.Hive.ProviderGrouping.AbstractRepositoryGroup.SessionId">
+            <summary>
+            Gets a unique Id for this session
+            </summary>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.AbstractRepositoryGroup.HiveContext">
+            <summary>
+            Gets or sets the repository context.
+            </summary>
+            <value>The repository context.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.AbstractRepositoryGroup.Providers">
+            <summary>
+            Gets or sets the providers.
+            </summary>
+            <value>The providers.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.AbstractRepositoryGroup.IdRoot">
+            <summary>
+            Gets or sets the id root for this provider group.
+            </summary>
+            <value>The id root.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.AbstractRepositoryGroup.UnitScopedCache">
+            <summary>
+            Gets or sets the unit-scoped cache.
+            </summary>
+            <value>The unit-scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.IEntityRepositoryGroup`1.Revisions">
+            <summary>
+            Used to access providers that can get or set revisions for <see cref="T:Umbraco.Framework.Persistence.Model.TypedEntity"/> types.
+            </summary>
+            <value>The revisions.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.IEntityRepositoryGroup`1.Schemas">
+            <summary>
+            Used to access providers that can get or set <see cref="T:Umbraco.Framework.Persistence.Model.AbstractSchemaPart"/> types.
+            </summary>
+            <value>The schemas.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.IEntityRepositoryGroup`1.QueryContext">
+            <summary>
+            Gets the query context.
+            </summary>
+            <value>The query context.</value>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderGrouping.EntityRepositoryGroup`1.Get``1(System.Boolean,Umbraco.Framework.HiveId[])">
+            <summary>
+            Gets a sequence of <see cref="!:TEntity"/> matching the specified ids.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="allOrNothing">If set to <c>true</c> all ids must match in order to return any <typeparamref name="TEntity"/> instances.</param>
+            <param name="ids">The ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderGrouping.EntityRepositoryGroup`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderGrouping.EntityRepositoryGroup`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.EntityRepositoryGroup`1.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.EntityRepositoryGroup`1.Revisions">
+            <summary>
+            Used to access providers that can get or set revisions for <see cref="T:Umbraco.Framework.Persistence.Model.TypedEntity"/> types.
+            </summary>
+            <value>The revisions.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.EntityRepositoryGroup`1.Schemas">
+            <summary>
+            Used to access providers that can get or set <see cref="T:Umbraco.Framework.Persistence.Model.AbstractSchemaPart"/> types.
+            </summary>
+            <value>The schemas.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.EntityRepositoryGroup`1.Expression">
+            <summary>
+            Gets the expression tree that is associated with the instance of <see cref="T:System.Linq.IQueryable"/>.
+            </summary>
+            <returns>
+            The <see cref="T:System.Linq.Expressions.Expression"/> that is associated with this instance of <see cref="T:System.Linq.IQueryable"/>.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.EntityRepositoryGroup`1.ElementType">
+            <summary>
+            Gets the type of the element(s) that are returned when the expression tree associated with this instance of <see cref="T:System.Linq.IQueryable"/> is executed.
+            </summary>
+            <returns>
+            A <see cref="T:System.Type"/> that represents the type of the element(s) that are returned when the expression tree associated with this object is executed.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.EntityRepositoryGroup`1.Provider">
+            <summary>
+            Gets the query provider that is associated with this data source.
+            </summary>
+            <returns>
+            The <see cref="T:System.Linq.IQueryProvider"/> that is associated with this data source.
+            </returns>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderGrouping.ReadonlyEntityRepositoryGroup`1.Get``1(System.Boolean,Umbraco.Framework.HiveId[])">
+            <summary>
+            Gets a sequence of <see cref="!:TEntity"/> matching the specified ids.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="allOrNothing">If set to <c>true</c> all ids must match in order to return any <typeparamref name="TEntity"/> instances.</param>
+            <param name="ids">The ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderGrouping.ReadonlyEntityRepositoryGroup`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderGrouping.ReadonlyEntityRepositoryGroup`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.ReadonlyEntityRepositoryGroup`1.Expression">
+            <summary>
+            Gets the expression tree that is associated with the instance of <see cref="T:System.Linq.IQueryable"/>.
+            </summary>
+            <returns>
+            The <see cref="T:System.Linq.Expressions.Expression"/> that is associated with this instance of <see cref="T:System.Linq.IQueryable"/>.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.ReadonlyEntityRepositoryGroup`1.ElementType">
+            <summary>
+            Gets the type of the element(s) that are returned when the expression tree associated with this instance of <see cref="T:System.Linq.IQueryable"/> is executed.
+            </summary>
+            <returns>
+            A <see cref="T:System.Type"/> that represents the type of the element(s) that are returned when the expression tree associated with this object is executed.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.ReadonlyEntityRepositoryGroup`1.Provider">
+            <summary>
+            Gets the query provider that is associated with this data source.
+            </summary>
+            <returns>
+            The <see cref="T:System.Linq.IQueryProvider"/> that is associated with this data source.
+            </returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.ReadonlyEntityRepositoryGroup`1.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderGrouping.ReadonlySchemaRepositoryGroup`1.Get``1(System.Boolean,Umbraco.Framework.HiveId[])">
+            <summary>
+            Gets a sequence of <see cref="!:TEntity"/> matching the specified ids.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="allOrNothing">If set to <c>true</c> all ids must match in order to return any <typeparamref name="TEntity"/> instances.</param>
+            <param name="ids">The ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderGrouping.SchemaRepositoryGroup`1.Get``1(System.Boolean,Umbraco.Framework.HiveId[])">
+            <summary>
+            Gets a sequence of <see cref="!:TEntity"/> matching the specified ids.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="allOrNothing">If set to <c>true</c> all ids must match in order to return any <typeparamref name="TEntity"/> instances.</param>
+            <param name="ids">The ids.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.SchemaRepositoryGroup`1.Revisions">
+            <summary>
+            Used to access providers that can get or set revisions for <see cref="T:Umbraco.Framework.Persistence.Model.AbstractSchemaPart"/> types.
+            </summary>
+            <value>The revisions.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.GroupUnit`1.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.GroupUnitFactory.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.GroupUnitFactory.HiveContext">
+            <summary>
+            Gets or sets the repository context.
+            </summary>
+            <value>The repository context.</value>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.RepositoryContext.DisposeResources">
+            <summary>
+            Handles the disposal of resources. Derived from abstract class <see cref="T:Umbraco.Framework.DisposableObject"/> which handles common required locking logic.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.RepositoryContext.HiveManager">
+            <summary>
+            Gets or sets the hive manager.
+            </summary>
+            <value>The hive manager.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.RepositoryContext.GenerationScopedCache">
+            <summary>
+            Gets or sets the generation-scoped cache. A generation-scoped cache may last the life of an application, or may span two or more lifetimes of the application.
+            </summary>
+            <value>The generation scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.RepositoryContext.BatchScopedCache">
+            <summary>
+            Gets or sets the batch-scoped cache. The scope of a batch is determined by the application, and may span two or more units of work. For example, typically
+            it might encompass a whole http request.
+            </summary>
+            <value>The batch scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.RepositoryContext.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.QueryExtensions.OfRevisionType``1(System.Linq.IQueryable{``0},System.String)">
+            <summary>
+            Adds metadata to a query, to filter the <paramref name="source"/> based on the name of a revision type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source.</param>
+            <param name="revisionType">Type of the revision.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.QueryExtensions.OfRevisionType``1(System.Linq.IQueryable{``0},Umbraco.Framework.RevisionStatusType)">
+            <summary>
+            Adds metadata to a query, to filter the <paramref name="source"/> based on the name of a revision type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source.</param>
+            <param name="revisionType">Type of the revision.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.ReadonlyGroupUnit`1.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.ReadonlyGroupUnitFactory.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderGrouping.ReadonlyGroupUnitFactory.HiveContext">
+            <summary>
+            Gets or sets the repository context.
+            </summary>
+            <value>The repository context.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSetup.UnitFactory">
+            <summary>
+            Gets the unit factory.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IProviderTransaction.WasCommitted">
+            <summary>
+            Gets a value indicating whether this instance was committed.
+            </summary>
+            <value><c>true</c> if committed; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IProviderTransaction.WasRolledBack">
+            <summary>
+            Gets a value indicating whether this instance was rolled back.
+            </summary>
+            <value><c>true</c> if rolled back; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.IProviderTransaction.CacheFlushActions">
+            <summary>
+            Gets a list of actions that will be performed on completion, for example cache updating
+            </summary>
+            <value>The on completion actions.</value>
+        </member>
+        <member name="M:Umbraco.Hive.Configuration.ProviderMappingGroup.IsMatchForUri(System.Uri)">
+            <summary>
+            Determines whether this group matches the specified route URI.
+            </summary>
+            <param name="uri">The URI.</param>
+            <returns><c>true</c> if this group is a match for the given URI; otherwise, <c>false</c>.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.Configuration.ProviderMappingGroup.IsMatchForUri(System.String)">
+            <summary>
+            Determines whether this group matches the specified route URI.
+            </summary>
+            <param name="uri">The URI.</param>
+            <returns><c>true</c> if this group is a match for the given URI; otherwise, <c>false</c>.</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.HiveManager.GetAllReadProviders">
+            <summary>
+            Gets all the read providers registered with this manager.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.HiveManager.GetAllReadWriteProviders">
+            <summary>
+            Gets all read write providers registered with this manager.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.HiveManager.CountResolveProviderMap(System.Int64)">
+            <summary>
+            Increments a performance counter for average Hive query duration, if this instance has been given
+            a reference to a performance counter object.
+            </summary>
+            <param name="ticks">The ticks.</param>
+            <remarks>Performance counting is optional and so this instance may have been instantiated without a reference to
+            a performance counter proxy, in which case this method fails silently.</remarks>
+        </member>
+        <member name="M:Umbraco.Hive.HiveManager.DisposeResources">
+            <summary>
+            Handles the disposal of resources. Derived from abstract class <see cref="T:Umbraco.Framework.DisposableObject"/> which handles common required locking logic.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.AbstractProviderTransaction.Commit(Umbraco.Hive.ProviderSupport.IProviderUnit)">
+            <summary>Commits this transaction. </summary>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.AbstractProviderTransaction.Rollback(Umbraco.Hive.ProviderSupport.IProviderUnit)">
+            <summary>Rolls back this transaction. </summary>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.AbstractProviderTransaction.Rollback(System.Boolean)">
+            <summary>
+            Rolls back this transaction and stores a value for whether the rollback request was as a result of an implicit operation, like the disposal of the transaction.
+            </summary>
+            <param name="requestIsImplicit">if set to <c>true</c> [request is implicit].</param>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractProviderTransaction.IsActive">
+            <summary>
+            Gets a value indicating whether this instance is active.
+            </summary>
+            <value><c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractProviderTransaction.WasCommitted">
+            <summary>
+            Gets a value indicating whether this instance was committed.
+            </summary>
+            <value><c>true</c> if committed; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractProviderTransaction.WasRolledBack">
+            <summary>
+            Gets a value indicating whether this instance was rolled back.
+            </summary>
+            <value><c>true</c> if rolled back; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.AbstractProviderTransaction.CacheFlushActions">
+            <summary>
+            Gets a list of actions that will be performed on completion, for example cache updating
+            </summary>
+            <value>The on completion actions.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.NullProviderRevisionRepositoryFactory`1.FallbackProviderFactory">
+            <summary>
+            Gets or sets the fallback provider which is used to load items as a faked revision, where callers expect to load a revision directly.
+            </summary>
+            <value>The fallback provider.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.NullProviderTransaction.CacheFlushActions">
+            <summary>
+            Gets a list of actions that will be performed on completion, for example cache updating
+            </summary>
+            <value>The on completion actions.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.ProviderUnit.UnitScopedCache">
+            <summary>
+            Gets the unit-scoped cache.
+            </summary>
+            <value>The unit scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.ProviderUnit.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.ProviderUnitFactory.UnitScopedCacheFactory">
+            <summary>
+            Gets or sets the unit-scoped cache factory.
+            </summary>
+            <value>The unit-scoped cache factory.</value>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.ReadonlyProviderUnit.Complete">
+            <summary>
+            Completes this unit of work.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Hive.ProviderSupport.ReadonlyProviderUnit.Abandon">
+            <summary>
+            Abandons this unit of work and its changes.
+            </summary>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.ReadonlyProviderUnit.EntityRepository">
+            <summary>
+            Gets or sets the entity repository.
+            </summary>
+            <value>The entity repository.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.ReadonlyProviderUnit.UnitScopedCache">
+            <summary>
+            Gets the unit-scoped cache.
+            </summary>
+            <value>The unit scoped cache.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.ReadonlyProviderUnit.FrameworkContext">
+            <summary>
+            Gets the framework context.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ReadonlyProviderSetup.ReadonlyUnitFactory">
+            <summary>
+            Gets the unit factory.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.GetEntityPath``1(Umbraco.Hive.ICoreReadonlyRepository{``0},``0,Umbraco.Framework.Persistence.Model.Associations.RelationType)">
+            <summary>
+            Returns the collection of ancestor ids
+            </summary>
+            <param name="mappingGroup"></param>
+            <param name="source"></param>
+            <param name="relationType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.GetEntityPath``1(Umbraco.Hive.ICoreReadonlyRepository{``0},Umbraco.Framework.HiveId,Umbraco.Framework.Persistence.Model.Associations.RelationType)">
+            <summary>
+            Returns the collection of ancestor ids
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="mappingGroup"></param>
+            <param name="id"></param>
+            <param name="relationType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.GetEntityPaths``1(Umbraco.Hive.ICoreReadonlyRepository{``0},Umbraco.Framework.HiveId,Umbraco.Framework.Persistence.Model.Associations.RelationType)">
+            <summary>
+            Returns a collection of paths for the entity with the given id 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="mappingGroup">The mapping group.</param>
+            <param name="id">The id.</param>
+            <param name="relationType">Type of the relation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.GetEntityPaths``1(Umbraco.Hive.ICoreReadonlyRepository{``0},Umbraco.Framework.HiveId,Umbraco.Framework.Persistence.Model.Associations.RelationType,Umbraco.Framework.HiveId)">
+            <summary>
+            Gets the entity paths.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="mappingGroup">The mapping group.</param>
+            <param name="id">The id.</param>
+            <param name="relationType">Type of the relation.</param>
+            <param name="rootId">The root id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.ProcessPaths(System.Collections.Generic.IEnumerable{Umbraco.Framework.Persistence.Model.Associations.IRelationById},Umbraco.Framework.HiveId,Umbraco.Framework.HiveId,System.Int32,System.Collections.Generic.List{System.Collections.Generic.List{Umbraco.Framework.HiveId}}@)">
+            <summary>
+            Recursive method for processing paths from a relations collection
+            </summary>
+            <param name="relations">The relations.</param>
+            <param name="destinationId">The destination id.</param>
+            <param name="pathIndex">Index of the path.</param>
+            <param name="paths">The paths.</param>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.AddOrUpdate``1(Umbraco.Hive.ICoreRepository{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds/Updates many entities at one time
+            </summary>
+            <param name="readWriter"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.AddNew``1(Umbraco.Hive.ICoreRevisionRepository{Umbraco.Framework.Persistence.Model.TypedEntity},Umbraco.Framework.Persistence.Model.Versioning.Revision{``0},Umbraco.Framework.RevisionStatusType)">
+            <summary>
+            Creates a branch new revision based on the revision passed in with the specified status if one is supplied.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="readWriter"></param>
+            <param name="revision">The Revision in which to create a new one from</param>
+            <param name="status">Default is Draft</param>
+            <returns>
+            Returns the newly created revision object
+            </returns>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.AddOrUpdate``1(Umbraco.Hive.ICoreRevisionRepository{Umbraco.Framework.Persistence.Model.TypedEntity},System.Collections.Generic.IEnumerable{Umbraco.Framework.Persistence.Model.Versioning.Revision{``0}})">
+            <summary>
+            Adds/Updates many revisions at one time
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="readWriter"></param>
+            <param name="revisions"></param>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.ChangeRelation(Umbraco.Hive.ICoreRelationsRepository,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId,Umbraco.Framework.Persistence.Model.Associations.RelationType,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId,System.Int32)">
+            <summary>
+            Changes an existing relation's source, destination and ordinal
+            </summary>
+            <param name="session"></param>
+            <param name="originalSourceId"></param>
+            <param name="originalDestinationId"></param>
+            <param name="withRelationType"></param>
+            <param name="newSourceId"></param>
+            <param name="newDestinationId"></param>
+            <param name="newOrdinal"></param>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.ChangeRelation(Umbraco.Hive.ICoreRelationsRepository,Umbraco.Framework.Persistence.Model.Associations.IRelationById,Umbraco.Framework.HiveId,Umbraco.Framework.HiveId,System.Int32)">
+            <summary>
+            Changes an existing relation's source, destination and ordinal
+            </summary>
+            <param name="session"></param>
+            <param name="originalRelation"></param>
+            <param name="newSourceId"></param>
+            <param name="newDestinationId"></param>
+            <param name="newOrdinal"></param>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.ChangeRelationType(Umbraco.Hive.ICoreRelationsRepository,Umbraco.Framework.Persistence.Model.Associations.IRelationById,Umbraco.Framework.Persistence.Model.Associations.RelationType)">
+            <summary>
+            Updates a relation to be of a new relation type
+            </summary>
+            <param name="session"></param>
+            <param name="originalRelation"></param>
+            <param name="newRelationType"></param>
+        </member>
+        <member name="M:Umbraco.Hive.RepositoryExtensions.GetAllNonContainerFiles(Umbraco.Hive.ProviderGrouping.IReadonlyEntityRepositoryGroup{Umbraco.Hive.RepositoryTypes.IFileStore})">
+            <summary>
+            Returns all files, excluding folders ordered by name
+            </summary>
+            <param name="unit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Hive.Tasks.CacheWatcherTask.Execute(Umbraco.Framework.Tasks.TaskExecutionContext)">
+            <summary>
+            Executes this task instance.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.ReadonlyProviderUnitFactory.UnitScopedCacheFactory">
+            <summary>
+            Gets or sets the unit-scoped cache factory.
+            </summary>
+            <value>The unit-scoped cache factory.</value>
+        </member>
+        <member name="P:Umbraco.Hive.ProviderSupport.NullProviderRevisionRepository`1.FallbackProvider">
+            <summary>
+            Gets or sets the fallback provider which is used to load items as a faked revision, where callers expect to load a revision directly.
+            </summary>
+            <value>The fallback provider.</value>
+        </member>
+    </members>
+</doc>

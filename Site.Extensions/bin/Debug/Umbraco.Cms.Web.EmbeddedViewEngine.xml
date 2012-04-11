@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Umbraco.Cms.Web.EmbeddedViewEngine</name>
+    </assembly>
+    <members>
+        <member name="T:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedRazorViewEngine">
+            <summary>
+            View Engine for embedded razor views
+            </summary>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedRazorViewEngine.#ctor">
+            <summary>
+            Sets default locations to look for views in for areas
+            </summary>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedRazorViewEngine.FileExists(System.Web.Mvc.ControllerContext,System.String)">
+            <summary>
+            This overrides this method specifically to just check against our virtual path provider instead
+            of going back to the BuildManager to check.
+            </summary>
+            <param name="controllerContext"></param>
+            <param name="virtualPath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewAttribute">
+            <summary>
+            When added to a model property, determines which resource to look up the label string for
+            </summary>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Creates an EmbeddedViewAttribute
+            </summary>
+            <param name="compiledViewName">Needs to be the fully qualified path of the embedded resource</param>
+            <param name="assemblyName">The Assembly name that the embedded resouce exists in (without the .dll)</param>
+        </member>
+        <member name="T:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath">
+            <summary>
+            helper for embedded compiled view paths
+            </summary>
+        </member>
+        <member name="F:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.NamePrefix">
+            <summary>
+            Prefix of the MD5 hashed view name so that we can determine that it is in fact a view name made from this class
+            </summary>
+            <remarks>
+            This is used to differentiate between a normal view and a compiled view, therefore it just needs to be a string
+            that is unique enough that nobody will use naturally when naming a view.
+            </remarks>
+        </member>
+        <member name="F:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.ViewPaths">
+            <summary>
+            Dictionary to store view paths and their hashes
+            </summary>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.Create(System.String)">
+            <summary>
+            Returns a compiled view path based on the FQN of the view (embedded resource) 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.Create(System.String,System.String)">
+            <summary>
+            Returns a compiled view path based on the FQN of the view (embedded resource) 
+            </summary>
+            <param name="resourcePath">
+            The path to the resource without the assembly name
+            </param>
+            <param name="assemblyName">
+            The name of the assembly where the resource is found
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.GetFullPath(System.String)">
+            <summary>
+            Returns the Full Virtual file path for the embedded view path
+            </summary>
+            <param name="embeddedViewPath">The embedded view path that was created with the Create method</param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.IsEmbeddedView(System.String)">
+            <summary>
+            determines if the virtual path is in fact an embedded resource
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.GetViewResourceType(System.String)">
+            <summary>
+            /Returns the resource/type FQN of the view resourace based on an md5 hash id
+            </summary>
+            <param name="hash"></param>
+            <returns></returns>
+            <remarks>
+            The only way that a resource will exist based on a hash is if it was created with the Create method.
+            </remarks>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.ViewResourceExists(System.String,System.String,System.Reflection.Assembly@)">
+            <summary>
+            Checks if the resource exists by the path specified
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.GetHashFromPath(System.String)">
+            <summary>
+            Returns the MD5 hash of the resource if found in the path
+            </summary>
+            <param name="viewPath"></param>
+            <returns></returns>
+            <remarks>
+            need to run some regex because the path will come through as all paths that are registerd with the ViewEngine such as:
+                /Areas/Umbraco/Views/Editors/ContentEditor/{_EV_MD5-HASH-OF-EMBEDDED-VIEW}(NAME OF FILE).cshtml
+            and we need to get the _EV_MD5_HASH
+            </remarks>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.Open(System.String)">
+            <summary>
+            Opens the resource as as Stream
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewPath.CreateResourcePathHashKey(System.String)">
+            <summary>
+            Returns a unique has for the resource path
+            </summary>
+            <param name="resPath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViews">
+            <summary>
+            A utility class
+            </summary>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViews.GetEmbeddedView(System.Object)">
+            <summary>
+            Returns the embedded view attribute object for the model specified, or null if the attribute was not found
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViews.GetEmbeddedViewPath(System.Object)">
+            <summary>
+            Returns the embedded view path for the model specified or an empty string if the embedded view attribute was not found
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViews.GetEmbeddedViewPath(Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewAttribute)">
+            <summary>
+            Returns the embedded view path for the model specified or an empty string if the embedded view attribute was not found
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewVirtualFile">
+            <summary>
+            Represents a Virtual file for an embedded View resource
+            </summary>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewVirtualFile.Open">
+            <summary>
+            Opens the resource as as Stream
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewVirtualFile.GetContents">
+            <summary>
+            Return the string representation of the file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewVirtualFile.Name">
+            <summary>
+            Returns the md5 name of the file
+            </summary>
+        </member>
+        <member name="T:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewVirtualPathProvider">
+            <summary>
+            Virtual path provider for returning embedded Views
+            </summary>
+            <remarks>
+            the virtual path format is:
+            ~/EV.axd/_EV_MD5HASHOFURLLOCATION or 
+            ~/EV.axd/FQN.OF.VIEW,SPECIFIEDASSEMBLY
+            </remarks>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.EmbeddedViewVirtualPathProvider.GetFile(System.String)">
+            <summary>
+            Returns the view resource stream 
+            </summary>
+            <param name="virtualPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Umbraco.Cms.Web.EmbeddedViewEngine.HtmlHelperExtensions.GetEmbeddedViewPath(System.Web.Mvc.HtmlHelper,System.Object)">
+            <summary>
+            Returns the embedded view path for the model specified or an empty string if the embedded view attribute was not found
+            </summary>
+            <param name="html"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

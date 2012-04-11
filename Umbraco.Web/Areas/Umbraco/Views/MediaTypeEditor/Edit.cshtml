@@ -1,0 +1,10 @@
+﻿@using Umbraco.Framework.Persistence.Model.Constants
+@model Umbraco.Cms.Web.Model.BackOffice.Editors.MediaTypeEditorModel
+@{
+    Layout = "../Shared/_SchemaEditorLayout.cshtml";
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    ViewBag.ControllerId = new Guid(CorePluginConstants.MediaTypeEditorControllerId);
+    ViewBag.TreeRootId = FixedHiveIds.MediaRootSchema.GetHtmlId();
+}

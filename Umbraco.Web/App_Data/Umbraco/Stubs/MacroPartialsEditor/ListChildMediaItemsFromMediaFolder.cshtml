@@ -1,0 +1,43 @@
+@inherits PartialViewMacroPage
+@using Umbraco.Cms.Web
+@using Umbraco.Cms.Web.Macros
+@using Umbraco.Framework
+
+@{    
+    @*
+    === Macro Parameters To Create ===
+    Show:True   Alias:mediaFolderID     Name:Media Folder ID    Type:Media Picker
+    *@    
+
+    @* Get the macro parameter and check it has a value otherwise set to empty hive Id *@
+    var mediaFolderID = String.IsNullOrEmpty(Model.MacroParameters.mediaFolderID) ? HiveId.Empty.ToString() : Model.MacroParameters.mediaFolderID;
+}
+
+@* Check that mediaFolderID is not an empty HiveID AND also check the string is a valid HiveID *@
+@if (mediaFolderID != HiveId.Empty.ToString() && HiveId.TryParse(mediaFolderID).Success)
+{
+     @* Get the media folder as a dynamic node *@
+    var mediaFolder = Umbraco.GetDynamicContentById(mediaFolderID);
+    
+    @* Check that mediaFolder has children media items *@    
+    if (mediaFolder.Children.Any())
+    {
+        <ul>
+            @* for each item in children of the selected media folder *@
+            @foreach (var mediaItem in mediaFolder.Children)
+            {
+                @*
+                ** Get the image URL **
+                The HiveID of the selected media item from the media picker
+                Then the string property alias of the upload data type on the media type
+                *@
+                var imageURL = Umbraco.GetMediaUrl(mediaItem.Id, "uploadedFile");
+
+                @* Get the name of the media item *@
+                var mediaName = mediaItem.Name;
+            
+                <li><img src="@imageURL" alt="@mediaName" /></li>
+            }
+        </ul>
+    }
+}

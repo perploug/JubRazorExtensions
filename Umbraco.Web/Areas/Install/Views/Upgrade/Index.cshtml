@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Upgrade";
+    ViewBag.IsInstalled = true;
+    ViewBag.ActiveIndex = 0;
+}
+
+@section tabs
+{
+    <ul>
+        <li class='@(ViewBag.ActiveIndex == 0 ? "active" : "")'>1 - Upgrade<em>&nbsp;</em></li>
+        <li class='@(ViewBag.ActiveIndex == 1 ? "active" : "")'>2 - Done<em>&nbsp;</em></li>
+    </ul>
+}
+
+<div class="tab main-tabinfo">
+    <div class="container">
+        <h1>Upgrade</h1>
+        <p>In Umbraco 5.1, User / Members went through some important changes to how custom user data is stored which requires an upgrade. To help with the upgrade of any existing users, we provide you with this upgrade tool.</p>
+        <p>Before you perform the upgrade, it is advised that you firstly <strong>backup your database</strong> incase anything does go wrong.</p>
+        <p>Once you are ready to go, please click the <strong>Continue</strong> button bellow, or press <strong>Cancel</strong> to return to the Umbraco login (please note, you will not be able to login untill this upgrade has been run)</p>
+        
+        <ul class="btn-web">
+            <li class="btn-continue"><a href="@Url.Action("Upgrade", "Upgrade", new { area = "install" })"><span>Continue</span></a></li>
+            <li class="btn-cancel"><a href="@Url.Action("App", "Default", new { area = "umbraco" })"><span>Cancel</span></a></li>
+        </ul>
+    </div>
+</div>

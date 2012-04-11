@@ -1,0 +1,1 @@
+<macro alias="bookList" name="Book List" cacheByPage="false" cachePeriodSeconds="0" cachePersonalized="false" macroType="PartialView" renderContentInEditor="false" selectedItem="DevDataset-BookList" useInEditor="false" />

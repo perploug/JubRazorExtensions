@@ -1,0 +1,51 @@
+﻿@model Umbraco.Cms.Web.Model.BackOffice.Editors.CreateUserModel
+@{
+    Layout = "../Shared/_CreateNewLayout.cshtml";
+    
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@section NoticeBoard {
+    @Html.DisplayFor(x => Model.NoticeBoard)
+}
+@section Editor
+{
+    @Html.ValidationMessageFor(x => Model.Name)
+    <div class="editor-label">
+        @Html.LabelFor(x => Model.Name)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(x => Model.Name)
+    </div>
+
+    @Html.ValidationMessageFor(x => Model.Username)
+    <div class="editor-label">
+        @Html.LabelFor(x => Model.Username)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(x => Model.Username)
+    </div>
+
+    @Html.ValidationMessageFor(x => Model.Email)
+    <div class="editor-label">
+        @Html.LabelFor(x => Model.Email)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(x => Model.Email)
+    </div>
+
+    @Html.ValidationMessageFor(x => Model.Password)
+    <div class="editor-label">
+        @Html.LabelFor(x => Model.Password)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(x => Model.Password)
+    </div>
+    
+    <div class="editor-field" style="display: none;">
+        @Html.DropDownListFor(x => Model.SelectedDocumentTypeId, Model.AvailableProfileTypes)
+    </div>
+}
+<br />
+@Html.UmbNextButton()

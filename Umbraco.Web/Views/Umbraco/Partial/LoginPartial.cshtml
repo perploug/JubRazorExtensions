@@ -1,0 +1,15 @@
+﻿@model Umbraco.Cms.Web.UI.Models.LoginModel
+
+@if (!User.Identity.IsAuthenticated)
+{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.EnablePartialViewValidation();
+    
+    @Html.EditorFor(x => Model, "LoginFormTemplate", "LoginForm")
+}
+else
+{
+    <h1>LOGGED IN AS @User.Identity.Name.ToUpper() | <a href="@Url.Action("Logout", "AuthSurface")">LOGOUT</a></h1>
+}
+<br />

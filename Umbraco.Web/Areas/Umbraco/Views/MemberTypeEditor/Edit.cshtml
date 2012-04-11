@@ -1,0 +1,9 @@
+﻿@model Umbraco.Cms.Web.Model.BackOffice.Editors.ProfileTypeEditorModel
+@{
+    Layout = "../Shared/_SchemaEditorLayout.cshtml";
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    ViewBag.ControllerId = new Guid(CorePluginConstants.MemberTypeEditorControllerId);
+    ViewBag.TreeRootId = Umbraco.Framework.Security.Model.FixedHiveIds.MemberProfileVirtualRoot.GetHtmlId();
+}

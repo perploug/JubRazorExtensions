@@ -1,0 +1,18 @@
+﻿@inherits RenderViewPage
+@using Umbraco.Cms.Web;
+@using Site.Extensions;
+
+
+@{
+    var currentPage = Model;
+    object o = new object();
+}
+
+<h1>WAT</h1>
+
+<ul>
+    @foreach (var child in Model.OfType("BookPage"))
+    { 
+        <li @child.IsFirst("style='color: green;'", "style='color: blue;'")><a href="@child.NiceUrl()">@child.Name</a></li>
+    }
+</ul>

@@ -1,0 +1,53 @@
+<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Umbraco.Cms.Web.Surface;
+using Umbraco.Cms.Web.Context;
+using Umbraco.Cms.Web;
+using Umbraco.Framework;
+
+namespace <#= Model.Namespace #>
+{ 
+    public class <#= Model.ControllerName #>SurfaceController : SurfaceController
+    {
+		//Surfacecontroller with a default ViewModel Setup
+		//2 methods added, one for rendering a macro, one for receiving the posted form back
+		
+		private readonly IUmbracoApplicationContext context;
+        public <#= Model.ControllerName #>SurfaceController(IUmbracoApplicationContext context)
+        {
+            this.context = context;
+        }
+
+		//Renders a partialview for a ChildAction macrom pageId param is optional, and just an exemple
+		[ChildActionOnly]
+        public PartialViewResult Render(Umbraco.Framework.HiveId? pageid)
+        {
+            if(pageid.HasValue)
+                ViewBag.saveTo = pageid.Value.ToString();
+            
+			var model = new ViewModels.<#= Model.ControllerName #>ViewModel();
+
+            return PartialView(model);    
+        }
+        
+		//endpoint for posting data to a surface controller action
+	    [HttpPost]
+        public ActionResult Create<#= Model.ControllerName #>Item(ViewModels.<#= Model.ControllerName #>ViewModel model)
+        {
+			//model not valid, do not save, but return current umbraco page
+            if (!ModelState.IsValid)
+                return CurrentUmbracoPage();
+			
+			//if validation passes perform whatever logic
+
+
+			//redirect to current page to clear the form
+            return RedirectToCurrentUmbracoPage();
+        }
+	}
+}

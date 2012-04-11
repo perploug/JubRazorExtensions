@@ -1,0 +1,8 @@
+<macro alias="test" name="Test" cacheByPage="false" cachePeriodSeconds="0" cachePersonalized="false" macroType="PartialView" renderContentInEditor="false" selectedItem="DevDataset-TestPartialViewMacro" useInEditor="true">
+  <parameter alias="Number" name="Number" show="false" parameterEditorId="718fc645-920e-4216-bd81-a99cdfc3b74c" />
+  <parameter alias="Textstring" name="Textstring" show="false" parameterEditorId="3bfb364a-abdb-43cc-a75a-9aea679512c2" />
+  <parameter alias="Textarea" name="Textarea" show="false" parameterEditorId="bbe74f13-5a57-4371-a027-d8a07bdc3b82" />
+  <parameter alias="Boolean" name="Boolean" show="false" parameterEditorId="20f44a55-4739-4a3f-89e4-fd82e53551af" />
+  <parameter alias="ContentPicker" name="Content Picker" show="false" parameterEditorId="bf7654fe-8463-4fc5-a807-6dbdec0b696b" />
+  <parameter alias="MediaPicker" name="Media Picker" show="false" parameterEditorId="154d8737-f0a6-457f-b0b6-019541f2f2a3" />
+</macro>

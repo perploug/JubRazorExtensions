@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Upgrade";
+    ViewBag.IsInstalled = true;
+    ViewBag.ActiveIndex = 1;
+}
+
+@section tabs
+{
+    <ul>
+        <li class='@(ViewBag.ActiveIndex == 0 ? "active" : "")'>1 - Upgrade<em>&nbsp;</em></li>
+        <li class='@(ViewBag.ActiveIndex == 1 ? "active" : "")'>2 - Done<em>&nbsp;</em></li>
+    </ul>
+}
+
+<div class="tab main-tabinfo">
+    <div class="container">
+        <h1>Upgrade Complete</h1>
+        <p>Congratulations! You have successfully upgraded your system.</p>
+        <ul class="btn-web">
+            <li class="btn-login"><a href="@Url.Action("App", "Default", new { area = "umbraco" })"><span>Login to Umbraco</span></a></li>
+        </ul>
+    </div>
+</div>

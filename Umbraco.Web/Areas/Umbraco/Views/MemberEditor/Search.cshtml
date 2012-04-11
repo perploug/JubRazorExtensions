@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Search";
+    Layout = "../Shared/_TabbedEditorLayout.cshtml";
+}
+
+@section Head {
+    @{Html.RequiresJs("Umbraco.Editors/MemberSearchEditor.js", "Scripts");}
+    <script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+                Umbraco.Editors.MemberSearchEditor.getInstance().init({
+                    activeTabIndex: 0,
+                    activeTabIndexField: $("#activeTabIndex"),
+                    searchUrl: "@Url.GetEditorUrl("SearchForm", new Guid(CorePluginConstants.MemberEditorControllerId), null)",
+                    editorUrl: "@Url.GetEditorUrl("Edit", new Guid(CorePluginConstants.MemberEditorControllerId), null)"
+                });
+            });
+        })(jQuery);
+    </script>
+}
+@section Tabs {
+    <li><a href="#t-search"><span>Search</span></a></li>
+}
+<input type="hidden" id="activeTabIndex" />
+<div id="dashboardContent" class="scrolling-content padded-content">
+    <div style="" class="tab-content">
+
+        <div id="dashboardStartHere" class="property-pane">
+            <div>
+                <div style="width: 100%" class="propertyItem clearfix">
+                    <div class="dashboard-wrapper">
+                        <h2>Member Search</h2>
+                        <img class="dashboard-icon" alt="Umbraco" src="@Url.Content("~/Areas/Umbraco/Content/Images/membersearch.png")">
+                        <p>Enter the username to search for and click "Search"</p>
+                        <p>
+                            <input type="text" data-bind="value: searchTerm, valueUpdate: 'afterkeydown', enter: search" />
+                            <button data-bind="click: search, enable: searchTerm">Search</button>
+                        </p>
+                        
+                        <img src="@Url.Content("~/Areas/Umbraco/Content/Images/throbber.gif")" data-bind="visible: searching"/>
+                        
+                        <p data-bind="visible: noResults"><strong>No members found with that username</strong></p>
+
+                        <div class="property-pane" data-bind="visible: searchResults().length > 0">
+                            <table border="0" class="members-table" rules="rows">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="template: { name: 'searchResult', foreach: searchResults, templateOptions: { editorUrl: editorUrl  } }">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="searchResult">
+    <tr>
+        <td><a href="${$item.editorUrl}/${Id}" data-bind="text: Username"></a></td>
+        <td data-bind="text: Name"></td>
+        <td data-bind="text: Email"></td>
+    </tr>
+</script>

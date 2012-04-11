@@ -1,0 +1,27 @@
+﻿@model Umbraco.Cms.Web.UI.Models.LoginModel
+
+@using (Html.BeginUmbracoForm("LoginForm", "AuthSurface"))
+{
+    @Html.ValidationSummary(prefix: "LoginForm")
+    <fieldset>
+        <legend>Login</legend>
+
+        @Html.ValidationMessageFor(x => x.Username)
+        <div class="editor-label">
+            @Html.LabelFor(x => x.Username)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(x => x.Username)
+        </div>
+        
+        @Html.ValidationMessageFor(x => x.Password)
+        <div class="editor-label">
+            @Html.LabelFor(x => x.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(x => x.Password)
+        </div>
+
+        <input type="submit" value="Login"/>
+    </fieldset>
+}

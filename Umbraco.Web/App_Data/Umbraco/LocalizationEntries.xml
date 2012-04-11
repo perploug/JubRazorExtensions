@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Localizations>
+  
+  <!-- Overrides to the default texts. All commented out for now to avoid disturbance.-->
+  
+  <!--<Text Key="Test">
+    <Translation Language="en-US">
+      <![CDATA[This number is #Number{< 1: less than one | 1: one | greater than one}]]></Translation>    
+  </Text>
+
+  --><!-- Overrides for custom properties --><!--
+  <Namespace Name="Umbraco.Cms.Web.PropertyEditors">
+
+    <Text Key="CustomValue1">
+      <Translation Language="en-US">Custom val. 1</Translation>
+    </Text>
+
+    <Text Key="ComplexModelTestEditorModel.NestedModel">
+      <Translation Language="en-US">Nested model</Translation>      
+    </Text>
+    
+    <Text Key="NestedComplexModel.Hello">
+      <Translation Language="en-US">Helloooo!</Translation>      
+    </Text>
+    <Text Key="NestedComplexModel.Bye">
+      <Translation Language="en-US">Bye, bye</Translation>
+    </Text>
+
+    --><!-- Validation texts--><!--
+    <Text Key="ComplexModelTestEditorModel.CustomValue1.FormatException">
+      <Translation Language="en-US">"{Value}" is not sufficiently integer for {DisplayName}</Translation>
+    </Text>
+
+    
+    <Text Key="ComplexModelTestEditorModel.CustomValue2.Required">
+      <Translation Language="en-US">Custom value 2 is so required</Translation>
+    </Text>
+  </Namespace>
+
+  
+  --><!-- General validation texts --><!--
+  <Text Key="Validation.Required">
+    <Translation Language="en-US">#DisplayName{"{#}! "}Must!</Translation>
+  </Text>
+
+  <Text Key="Validation.FormatException">
+    <Translation Language="en-US">{Value} didn't work for {DisplayName}. Try something else...</Translation>
+  </Text>
+  
+  --><!-- An override. Let's use a different label for name in the "Umbraco properties" tab--><!--
+  --><!--<Text Key="CoreEntityModel.Name" Namespace="Umbraco.Cms.Web">
+    <Translation Language="en-US">Umbraco name</Translation>
+  </Text>-->
+  
+</Localizations>

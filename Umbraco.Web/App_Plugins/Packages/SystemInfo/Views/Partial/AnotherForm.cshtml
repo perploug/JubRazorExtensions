@@ -1,0 +1,17 @@
+﻿@using Umbraco.Cms.Packages.SystemInfo.Models
+@using Umbraco.Cms.Web.Macros
+@inherits PartialViewMacroPage
+
+@{
+    var formModel = new TestSurfaceFormModel();
+}
+
+<h4>@Model.MacroParameters.Title</h4>
+
+@using (Html.BeginUmbracoForm("HandleFormSubmit", new Guid("98625300-6DF0-41AF-A432-83BD0232815A")))
+{
+    @Html.ValidationSummary(prefix: "MyTestForm")
+    @Html.EditorFor(x => formModel, "", "MyTestForm")
+
+    <input type="submit"/>
+}
