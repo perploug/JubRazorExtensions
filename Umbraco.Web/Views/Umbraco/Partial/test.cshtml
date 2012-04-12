@@ -10,6 +10,10 @@
 
 
 <ul>
+    @foreach (var c in DynamicModel.BookPages.Skip(1).Take(3)) { 
+        <li>@c.Name</li>
+    }
+
     @foreach (var child in Model.OfType("BookPage").Skip(10).Take(3))
     { 
         <li @child.IsFirst("style='color: green;'", "style='color: blue;'")><a href="@child.NiceUrl()">@child.Name</a></li>
