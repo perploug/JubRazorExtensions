@@ -128,3 +128,29 @@
 2012-04-12 10:42:50,796 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
 2012-04-12 10:42:50,798 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
 2012-04-12 10:42:50,800 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,809 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,811 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,813 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,815 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,816 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,819 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,821 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,823 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,824 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,826 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,827 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,829 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,831 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,833 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,835 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,836 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type CopyFileTask for package, registering it as devdataset-post-package-install
+2012-04-12 10:42:50,839 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - Found post-package-install config task of type DisplayUITask for package, registering it as systeminfo-post-package-install
+2012-04-12 10:42:50,841 [4] INFO  Umbraco.Cms.Web.Tasks.ConfigurationTaskBuilder [(null)] - End building configuration tasks (took 176ms)
+2012-04-12 10:42:50,845 [4] INFO  Umbraco.Cms.Web.System.Boot.BootManager [(null)] - Application start took 19581ms
+2012-04-12 10:42:58,121 [10] INFO  Umbraco.Cms.Web.Routing.DefaultRoutingEngine [(null)] - Resolving entity by Non-Domain URL
+2012-04-12 10:43:01,599 [10] INFO  Umbraco.Cms.Web.Routing.DefaultRoutingEngine [(null)] - FindEntityByUrl for URL http://localhost:5050/ took 7949ms
+2012-04-12 10:43:14,296 [10] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 10:48:42,404 [10] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'Default' from the BuildManager
+2012-04-12 10:48:42,414 [10] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'Default' from the BuildManager
+2012-04-12 10:48:49,505 [10] INFO  Umbraco.Framework.Localization.TextManager [(null)] - Start ReloadTexts
+2012-04-12 10:48:49,527 [10] INFO  Umbraco.Framework.Localization.TextManager [(null)] - End ReloadTexts (took 14ms)
