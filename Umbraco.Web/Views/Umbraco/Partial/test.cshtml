@@ -10,7 +10,7 @@
 
 
 <ul>
-    @foreach (var child in Model.OfType("BookPage").Skip(10).Take(2))
+    @foreach (var child in Model.OfType("BookPage").Skip(10).Take(3))
     { 
         <li @child.IsFirst("style='color: green;'", "style='color: blue;'")><a href="@child.NiceUrl()">@child.Name</a></li>
     }
