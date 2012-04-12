@@ -180,3 +180,29 @@
 2012-04-12 14:15:30,601 [147] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - Get childIds (took 809ms)
 2012-04-12 14:15:37,204 [10] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions
 2012-04-12 14:15:37,207 [10] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions (took 1ms)
+2012-04-12 14:15:37,216 [10] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - Get childIds
+2012-04-12 14:15:37,544 [10] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:15:37,651 [10] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - Get childIds (took 432ms)
+2012-04-12 14:15:40,421 [146] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions
+2012-04-12 14:15:40,426 [146] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions (took 2ms)
+2012-04-12 14:15:40,428 [146] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - Get childIds
+2012-04-12 14:15:40,797 [146] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:15:40,906 [146] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - Get childIds (took 475ms)
+2012-04-12 14:15:54,762 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'LanguageTree' from the BuildManager
+2012-04-12 14:15:54,767 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'LanguageTree' from the BuildManager
+2012-04-12 14:15:54,829 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'DictionaryTree' from the BuildManager
+2012-04-12 14:15:54,834 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'DictionaryTree' from the BuildManager
+2012-04-12 14:15:54,945 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'DocumentTypeTree' from the BuildManager
+2012-04-12 14:15:54,949 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'DocumentTypeTree' from the BuildManager
+2012-04-12 14:15:55,004 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'MediaTypeTree' from the BuildManager
+2012-04-12 14:15:55,008 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'MediaTypeTree' from the BuildManager
+2012-04-12 14:15:55,073 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'StylesheetTree' from the BuildManager
+2012-04-12 14:15:55,079 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'StylesheetTree' from the BuildManager
+2012-04-12 14:15:55,278 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'ScriptTree' from the BuildManager
+2012-04-12 14:15:55,282 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'ScriptTree' from the BuildManager
+2012-04-12 14:15:55,439 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'TemplateTree' from the BuildManager
+2012-04-12 14:15:55,443 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'TemplateTree' from the BuildManager
+2012-04-12 14:15:55,503 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'PartialsTree' from the BuildManager
+2012-04-12 14:15:55,508 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'PartialsTree' from the BuildManager
+2012-04-12 14:16:09,934 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'PartialsEditor' from the BuildManager
+2012-04-12 14:16:09,938 [145] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'PartialsEditor' from the BuildManager
