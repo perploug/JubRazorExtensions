@@ -232,3 +232,26 @@
 2012-04-12 20:45:59,798 [VsCBMThreadPool] INFO  Umbraco.Cms.Web.System.PluginManager [(null)] - C:\Users\Hartvig\AppData\Local\Temp\Temporary ASP.NET Files\root\90c4d843\a2acd138\Examine.dll is locked, attempting to rename
 2012-04-12 20:45:59,822 [VsCBMThreadPool] INFO  Umbraco.Cms.Web.System.PluginManager [(null)] - Adding to BuildManager: 'Examine, Version=2.10.0.292, Culture=neutral, PublicKeyToken=null'
 2012-04-12 20:45:59,823 [VsCBMThreadPool] INFO  Umbraco.Cms.Web.System.PluginManager [(null)] - C:\Users\Hartvig\SparkleShare\JubRazorExtensions\Umbraco.Web\App_Plugins\Packages\Examine\lib\Lucene.Net.dll to C:\Users\Hartvig\AppData\Local\Temp\Temporary ASP.NET Files\root\90c4d843\a2acd138
+2012-04-12 14:16:10,464 [145] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
+2012-04-12 14:16:53,319 [145] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:16:53,322 [145] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:16:53,324 [145] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:16:53,325 [145] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:16:53,327 [145] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:16:53,330 [145] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:16:53,332 [145] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:17:06,464 [147] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
+2012-04-12 14:17:28,947 [146] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
+2012-04-12 14:17:29,148 [146] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
+2012-04-12 14:46:55,515 [10] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
+2012-04-12 14:47:10,272 [118] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'DataTypeTree' from the BuildManager
+2012-04-12 14:47:10,276 [118] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'DataTypeTree' from the BuildManager
+2012-04-12 14:47:10,336 [118] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'PackagingTree' from the BuildManager
+2012-04-12 14:47:10,341 [118] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'PackagingTree' from the BuildManager
+2012-04-12 14:47:10,388 [118] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'MacroTree' from the BuildManager
+2012-04-12 14:47:10,393 [118] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'MacroTree' from the BuildManager
+2012-04-12 14:47:10,551 [118] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'MacroPartialsTree' from the BuildManager
+2012-04-12 14:47:10,556 [118] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'MacroPartialsTree' from the BuildManager
+2012-04-12 14:47:15,907 [113] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'MacroPartialsEditor' from the BuildManager
+2012-04-12 14:47:15,911 [113] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'MacroPartialsEditor' from the BuildManager
+2012-04-12 14:47:16,404 [113] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
