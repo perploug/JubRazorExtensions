@@ -11,9 +11,9 @@
      }
  }
 
-    <h1>@Model.Root().QueryAll().Random().Name</h1>
+<h1>@Model.Root().QueryAll().Random().Name</h1>
 
- <ul>
+<ul>
     @foreach (var item in Model.Root().Children())
     {
         if (item.IsVisible())
@@ -21,4 +21,4 @@
             <li @item.IsAncestorOrSelf(Model, "class='active'", "")><a href="@item.NiceUrl()">@item.Name</a></li>
         }
     }
- </ul>
+</ul>
