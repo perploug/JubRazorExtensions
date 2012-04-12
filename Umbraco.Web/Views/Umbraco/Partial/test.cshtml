@@ -11,7 +11,7 @@
 <h1>WAT</h1>
 
 <ul>
-    @foreach (var child in Model.OfType("BookPage"))
+    @foreach (var child in Model.OfType("BookPage").Skip(1).Take(2))
     { 
         <li @child.IsFirst("style='color: green;'", "style='color: blue;'")><a href="@child.NiceUrl()">@child.Name</a></li>
     }
