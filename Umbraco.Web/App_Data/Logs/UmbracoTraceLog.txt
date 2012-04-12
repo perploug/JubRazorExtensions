@@ -154,3 +154,29 @@
 2012-04-12 10:48:42,414 [10] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'Default' from the BuildManager
 2012-04-12 10:48:49,505 [10] INFO  Umbraco.Framework.Localization.TextManager [(null)] - Start ReloadTexts
 2012-04-12 10:48:49,527 [10] INFO  Umbraco.Framework.Localization.TextManager [(null)] - End ReloadTexts (took 14ms)
+2012-04-12 10:48:49,612 [10] INFO  Umbraco.Framework.Localization.TextManager [(null)] - Start ReloadTexts
+2012-04-12 10:48:49,619 [10] INFO  Umbraco.Framework.Localization.TextManager [(null)] - End ReloadTexts (took 4ms)
+2012-04-12 10:48:54,885 [10] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
+2012-04-12 10:48:54,893 [10] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
+2012-04-12 10:48:54,897 [10] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
+2012-04-12 10:48:54,900 [10] INFO  Umbraco.Hive.Tasks.CacheWatcherTask [(null)] - Executing Umbraco.Hive.Tasks.CacheWatcherTask
+2012-04-12 14:15:18,780 [147] INFO  Umbraco.Framework.Localization.TextManager [(null)] - Start ParseAllPatterns
+2012-04-12 14:15:19,031 [147] INFO  Umbraco.Framework.Localization.TextManager [(null)] - End ParseAllPatterns (took 244ms)
+2012-04-12 14:15:20,042 [147] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'ApplicationTree' from the BuildManager
+2012-04-12 14:15:20,071 [147] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'ApplicationTree' from the BuildManager
+2012-04-12 14:15:20,095 [148] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'DashboardEditor' from the BuildManager
+2012-04-12 14:15:20,103 [148] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'DashboardEditor' from the BuildManager
+2012-04-12 14:15:21,118 [147] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Querying for controller 'ContentTree' from the BuildManager
+2012-04-12 14:15:21,124 [147] INFO  Umbraco.Cms.Web.Mvc.ControllerFactories.PluginControllerFactory [(null)] - Found controller 'ContentTree' from the BuildManager
+2012-04-12 14:15:22,590 [145] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions
+2012-04-12 14:15:22,603 [145] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions (took 7ms)
+2012-04-12 14:15:22,606 [145] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - Get childIds
+2012-04-12 14:15:23,227 [145] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:15:23,254 [145] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - Get childIds (took 646ms)
+2012-04-12 14:15:29,781 [147] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions
+2012-04-12 14:15:29,786 [147] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions (took 3ms)
+2012-04-12 14:15:29,789 [147] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - Get childIds
+2012-04-12 14:15:30,300 [147] WARN  NHibernate.Engine.StatefulPersistenceContext.ProxyWarnLog [(null)] - Narrowing proxy to Umbraco.Framework.Persistence.RdbmsModel.AttributeSchemaDefinition - this operation breaks ==
+2012-04-12 14:15:30,601 [147] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - Get childIds (took 809ms)
+2012-04-12 14:15:37,204 [10] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions
+2012-04-12 14:15:37,207 [10] INFO  Umbraco.Cms.Web.Trees.ContentTreeController [(null)] - FilterWithPermissions (took 1ms)
