@@ -31,7 +31,7 @@ namespace Site.Extensions
                 return new HtmlString(valueIfTrue);
             else
                 return new HtmlString(valueIfFalse);
-        }
+        }   
 
         public static HtmlString IsNotLast(this Content content, string valueIfTrue, string valueIfFalse)
         {

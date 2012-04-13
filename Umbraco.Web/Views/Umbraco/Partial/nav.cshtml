@@ -1,0 +1,10 @@
+﻿@inherits RenderViewPage
+@using Umbraco.Cms.Web;
+
+
+<ul class="nav">
+
+	@foreach(var child in DynamicModel.Children.Where("umbracoNaviHide != @0", "True")){
+		<li><a href="@child.Url">@child.Name</a></li>
+        }
+</ul>

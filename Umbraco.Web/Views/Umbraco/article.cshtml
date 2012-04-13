@@ -1,0 +1,21 @@
+﻿@inherits RenderViewPage
+@using System.Web.Mvc.Html;
+@using Umbraco.Cms.Web;
+@using Site.Extensions;
+
+
+@{
+	Layout = "";
+}
+
+
+@* Get image from uploader property (with type uploader)  *@
+@Model.Image("uploader")
+
+<p>---------</p>
+
+@* Get image from mediaPicker property (with type media picker)  *@
+@Model.Image("mediaPicker")
+
+@*Fetch thumbnails with size 100, (other sizes must be defined on the uploader *@
+@Model.Image("mediaPicker", 100)
