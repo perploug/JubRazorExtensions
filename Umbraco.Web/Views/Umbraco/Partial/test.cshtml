@@ -2,7 +2,6 @@
 @using Umbraco.Cms.Web;
 @using Site.Extensions;
 
-
 @{
     var currentPage = Model;
     object o = new object();
@@ -15,3 +14,4 @@
         <li @child.IsFirst("style='color: green;'", "style='color: blue;'")><a href="@child.NiceUrl()">@child.Name</a></li>
     }
 </ul>
+
